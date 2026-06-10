@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign²Art — Amged Higazi Photography</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* HERO */
+  #hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .hero-bg-grid{position:absolute;inset:0;display:grid;grid-template-columns:repeat(5,1fr);gap:3px;opacity:0.28;}
+  .hero-cell{background-size:cover;background-position:center;}
+  .hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,0.4) 0%,rgba(10,10,10,0.75) 100%);}
+  .hero-content{position:relative;z-index:2;text-align:center;animation:heroIn 1.4s ease forwards;}
+  @keyframes heroIn{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(40px,7vw,72px);line-height:1.1;color:#f0e8d8;margin-bottom:16px;}
+  .hero-title em{color:#c9a96e;font-style:italic;}
+  .hero-sub{font-size:13px;letter-spacing:2px;color:#999;margin-bottom:40px;}
+  .hero-btns{display:flex;gap:16px;justify-content:center;}
+  .scroll-ind{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;animation:bounce 2s infinite;}
+  .scroll-ind span{font-size:9px;letter-spacing:3px;color:#555;}
+  .scroll-ind div{width:1px;height:40px;background:linear-gradient(to bottom,#c9a96e,transparent);}
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+  /* SERVICES */
+  #services{padding:100px 60px;}
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;}
+  .service-card{position:relative;overflow:hidden;height:280px;cursor:pointer;background:#111;text-decoration:none;display:block;}
+  .service-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.7s ease,filter 0.5s ease;filter:brightness(0.4);}
+  .service-card:hover .service-img{transform:scale(1.08);filter:brightness(0.65);}
+  .service-info{position:absolute;bottom:0;left:0;right:0;padding:28px 24px;background:linear-gradient(to top,rgba(10,10,10,0.95) 0%,transparent 100%);}
+  .service-num{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:8px;}
+  .service-name{font-family:'Playfair Display',serif;font-size:20px;color:#f0e8d8;}
+  .service-arrow{position:absolute;top:24px;right:24px;font-size:18px;color:#c9a96e;opacity:0;transition:opacity 0.3s;}
+  .service-card:hover .service-arrow{opacity:1;}
+  .book-card{background:#0e0e0e;display:flex;align-items:center;justify-content:center;border:0.5px solid rgba(201,169,110,0.15);transition:background 0.3s;}
+  .book-card:hover{background:#141414;}
+  .book-inner{text-align:center;}
+  .book-plus{font-size:36px;color:#c9a96e;margin-bottom:14px;}
+  .book-title{font-family:'Playfair Display',serif;font-size:20px;color:#c9a96e;}
+  .book-email{font-size:11px;color:#555;letter-spacing:1px;margin-top:8px;}
+
+  /* ABOUT */
+  #about{background:#0d0d0d;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding:100px 60px;}
+  .about-img-wrap{position:relative;}
+  .about-img{width:100%;height:500px;background-size:cover;background-position:center top;background-image:url('https://static.wixstatic.com/media/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg/v1/fill/w_800,h_1080,fp_0.44_0.42,q_90,enc_avif,quality_auto/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg');}
+  .about-frame{position:absolute;top:-14px;left:-14px;right:14px;bottom:-14px;border:0.5px solid rgba(201,169,110,0.35);pointer-events:none;}
+  .about-text h2{font-family:'Playfair Display',serif;font-size:30px;color:#f0e8d8;line-height:1.3;margin-bottom:28px;}
+  .about-text h2 em{color:#c9a96e;font-style:italic;}
+  .about-text p{font-size:14px;line-height:2;color:#888;margin-bottom:18px;}
+  .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+  .stat{text-align:center;padding:20px 12px;border:0.5px solid rgba(201,169,110,0.2);}
+  .stat-num{font-family:'Playfair Display',serif;font-size:30px;color:#c9a96e;}
+  .stat-label{font-size:9px;letter-spacing:3px;color:#555;margin-top:6px;text-transform:uppercase;}
+
+  /* GALLERY */
+  #gallery{padding:100px 60px;}
+  .gallery-tabs{display:flex;margin-bottom:40px;border-bottom:0.5px solid rgba(255,255,255,0.08);}
+  .tab{padding:12px 24px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;color:#555;border:none;border-bottom:2px solid transparent;background:none;font-family:'Inter',sans-serif;transition:all 0.3s;}
+  .tab.active,.tab:hover{color:#c9a96e;border-bottom-color:#c9a96e;}
+
+  /* CONTACT */
+  #contact{background:#0d0d0d;text-align:center;padding:100px 60px;}
+  .contact-inner{max-width:500px;margin:0 auto;}
+  .contact-inner p{font-size:14px;line-height:2;color:#777;margin-bottom:32px;}
+  .contact-email{font-family:'Playfair Display',serif;font-size:22px;color:#c9a96e;text-decoration:none;border-bottom:0.5px solid rgba(201,169,110,0.4);padding-bottom:4px;}
+  .contact-email:hover{color:#e0c080;}
+
+  @media(max-width:900px){
+    #services,#gallery,#contact{padding:70px 24px;}
+    #about{grid-template-columns:1fr;gap:40px;padding:70px 24px;}
+    .services-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:600px){
+    .services-grid{grid-template-columns:1fr;}
+    .hero-btns{flex-direction:column;align-items:center;}
+  }
+</style>
+</head>
+<body>
+
+<section id="hero">
+  <div class="hero-bg-grid" id="heroGrid"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="eyebrow">Photography · Design · Vision</p>
+    <h1 class="hero-title">From A Different<br><em>Point of View</em></h1>
+    <p class="hero-sub">Amged Higazi — Bochum, Germany</p>
+    <div class="hero-btns">
+      <a class="btn btn-gold" href="#gallery">View Gallery</a>
+      <a class="btn btn-outline" href="#about">About Me</a>
+    </div>
+  </div>
+  <div class="scroll-ind"><span>Scroll</span><div></div></div>
+</section>
+
+<section id="services">
+  <div class="section-header fade-up">
+    <span class="section-num">01</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Services</h2>
+  </div>
+  <div class="services-grid fade-up">
+
+    <a class="service-card" href="events.html">
+      <div class="service-img" style="background-image:url('https://static.wixstatic.com/media/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_800,h_600,q_85,enc_avif,quality_auto/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg')"></div>
+      <span class="service-arrow">→</span>
+      <div class="service-info">
+        <div class="service-num">01</div>
+        <div class="service-name">Reportage &amp; Events</div>
+      </div>
+    </a>
+
+    <a class="service-card" href="fashion.html">
+      <div class="service-img" style="background-image:url('https://static.wixstatic.com/media/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg/v1/fill/w_800,h_600,q_85,enc_avif,quality_auto/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg')"></div>
+      <span class="service-arrow">→</span>
+      <div class="service-info">
+        <div class="service-num">02</div>
+        <div class="service-name">Model &amp; Portrait</div>
+      </div>
+    </a>
+
+    <a class="service-card" href="weddings.html">
+      <div class="service-img" style="background-image:url('https://static.wixstatic.com/media/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_800,h_600,q_85,enc_avif,quality_auto/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg')"></div>
+      <span class="service-arrow">→</span>
+      <div class="service-info">
+        <div class="service-num">03</div>
+        <div class="service-name">Weddings</div>
+      </div>
+    </a>
+
+    <a class="service-card" href="cars.html">
+      <div class="service-img" style="background-image:url('https://static.wixstatic.com/media/6cead5_909d1af7a3c3459e9aad3bfee125e7ac~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_800,h_600,q_85,enc_avif,quality_auto/6cead5_909d1af7a3c3459e9aad3bfee125e7ac~mv2_d_6000_4000_s_4_2.jpg')"></div>
+      <span class="service-arrow">→</span>
+      <div class="service-info">
+        <div class="service-num">04</div>
+        <div class="service-name">Cars Reviews</div>
+      </div>
+    </a>
+
+    <a class="service-card" href="food.html">
+      <div class="service-img" style="background-image:url('https://static.wixstatic.com/media/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg/v1/fill/w_800,h_600,q_85,enc_avif,quality_auto/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg')"></div>
+      <span class="service-arrow">→</span>
+      <div class="service-info">
+        <div class="service-num">05</div>
+        <div class="service-name">Food &amp; Products</div>
+      </div>
+    </a>
+
+    <a class="service-card book-card" href="mailto:sign2art@gmail.com">
+      <div class="book-inner">
+        <div class="book-plus">+</div>
+        <div class="book-title">Book a Session</div>
+        <div class="book-email">sign2art@gmail.com</div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-img-wrap fade-up">
+    <div class="about-img"></div>
+    <div class="about-frame"></div>
+  </div>
+  <div class="about-text fade-up">
+    <p class="eyebrow">02 — About</p>
+    <h2>It is not about taking pictures,<br><em>but capturing a moment forever</em></h2>
+    <p>Born in Omdurman, Sudan. Trained at the prestigious College of Fine and Applied Art in Khartoum. Apprenticed under the legendary Prof. Hassan Alhadi.</p>
+    <p>After working for Apex Press &amp; Publishing as a Graphic Designer and as a journalist photographer specializing in cultural, beauty and fashion photography — now based in Bochum, Germany, with African Tide Association.</p>
+    <p>Traveling the globe for that unforgettable image, using graphic composition and color to capture every nuance of the human spirit.</p>
+    <div class="about-stats">
+      <div class="stat"><div class="stat-num">20+</div><div class="stat-label">Years</div></div>
+      <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Moments</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Disciplines</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-header fade-up">
+    <span class="section-num">03</span>
+    <div class="section-line"></div>
+    <h2 class="section-title">Gallery</h2>
+  </div>
+  <div class="gallery-tabs fade-up">
+    <button class="tab active" onclick="filterGallery('all',this)">All Work</button>
+    <button class="tab" onclick="filterGallery('portrait',this)">Portrait</button>
+    <button class="tab" onclick="filterGallery('fashion',this)">Fashion</button>
+    <button class="tab" onclick="filterGallery('other',this)">Other</button>
+  </div>
+  <div class="masonry fade-up" id="galleryGrid"></div>
+</section>
+
+<section id="contact">
+  <div class="section-header fade-up" style="justify-content:center;">
+    <span class="section-num">04</span>
+    <div class="section-line" style="max-width:120px;"></div>
+    <h2 class="section-title">Contact</h2>
+    <div class="section-line" style="max-width:120px;"></div>
+  </div>
+  <div class="contact-inner fade-up">
+    <p>Ready to capture your moment? Whether it's a portrait session, event, wedding, or creative project — let's create something unforgettable.</p>
+    <a class="contact-email" href="mailto:sign2art@gmail.com">sign2art@gmail.com</a>
+  </div>
+</section>
+
+<script src="nav.js"></script>
+<script>
+const IMGS=[
+  {src:'https://static.wixstatic.com/media/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg/v1/fill/w_800,h_1080,fp_0.44_0.42,q_90,enc_avif,quality_auto/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_1b687756abc946fcb42e4ea8338673a2~mv2.jpg/v1/fill/w_800,h_1080,fp_0.35_0.48,q_90,enc_avif,quality_auto/6cead5_1b687756abc946fcb42e4ea8338673a2~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_b3c804bea1d74d5fb37bcf59b7adc7c3~mv2.jpg/v1/fill/w_800,h_1080,fp_0.5_0.48,q_90,enc_avif,quality_auto/6cead5_b3c804bea1d74d5fb37bcf59b7adc7c3~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_80ba9cd9faea4c8296987a9ed3c2ec53~mv2.jpg/v1/fill/w_800,h_1080,fp_0.53_0.39,q_90,enc_avif,quality_auto/6cead5_80ba9cd9faea4c8296987a9ed3c2ec53~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_104edf936de843baa9200fa97563cb02~mv2.jpg/v1/fill/w_800,h_1080,fp_0.62_0.42,q_90,enc_avif,quality_auto/6cead5_104edf936de843baa9200fa97563cb02~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_67f68f52cae7452d9d02868e7e725aab~mv2.jpg/v1/fill/w_800,h_1080,fp_0.54_0.54,q_90,enc_avif,quality_auto/6cead5_67f68f52cae7452d9d02868e7e725aab~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_bf68a687729c4c63bcea8a1d4e285304~mv2.jpg/v1/fill/w_800,h_1080,fp_0.53_0.48,q_90,enc_avif,quality_auto/6cead5_bf68a687729c4c63bcea8a1d4e285304~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg/v1/fill/w_800,h_540,fp_0.51_0.38,q_90,enc_avif,quality_auto/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg',cat:'other'},
+  {src:'https://static.wixstatic.com/media/6cead5_40ce869ee0fc41ae9fd77f4c7e3fc66e~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,fp_0.52_0.56,q_90,enc_avif,quality_auto/6cead5_40ce869ee0fc41ae9fd77f4c7e3fc66e~mv2_d_4000_6000_s_4_2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_82c20cd28e9c47169a3e40758edbb603~mv2_d_1500_2250_s_2.jpg/v1/fill/w_800,h_1200,fp_0.5_0.27,q_90,enc_avif,quality_auto/6cead5_82c20cd28e9c47169a3e40758edbb603~mv2_d_1500_2250_s_2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_acee24f76db743128d9e14d7b20f2666~mv2.jpg/v1/fill/w_800,h_1080,fp_0.64_0.52,q_90,enc_avif,quality_auto/6cead5_acee24f76db743128d9e14d7b20f2666~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_b58308454f874f1096e3686543e7d464~mv2.jpg/v1/fill/w_800,h_1080,fp_0.61_0.47,q_90,enc_avif,quality_auto/6cead5_b58308454f874f1096e3686543e7d464~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_2e8a2947f1e74d7da681494f34ebc4d9~mv2.jpg/v1/fill/w_800,h_1080,fp_0.6_0.41,q_90,enc_avif,quality_auto/6cead5_2e8a2947f1e74d7da681494f34ebc4d9~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_39e7e2facc7c4efc9ca98ad48dd16f25~mv2.jpg/v1/fill/w_800,h_1080,fp_0.58_0.2,q_90,enc_avif,quality_auto/6cead5_39e7e2facc7c4efc9ca98ad48dd16f25~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_4a7bb9da378442ada519f6b2e435710f~mv2.jpg/v1/fill/w_800,h_1080,fp_0.63_0.56,q_90,enc_avif,quality_auto/6cead5_4a7bb9da378442ada519f6b2e435710f~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_49670236249f419090ee4b95f3a36f44~mv2.jpg/v1/fill/w_800,h_1080,fp_0.46_0.32,q_90,enc_avif,quality_auto/6cead5_49670236249f419090ee4b95f3a36f44~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_8128d04f136a4d298b4e5c8b99a83353~mv2.jpg/v1/fill/w_800,h_1080,fp_0.52_0.37,q_90,enc_avif,quality_auto/6cead5_8128d04f136a4d298b4e5c8b99a83353~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_d95fecdd1a9640389bd9df78870c4595~mv2.jpg/v1/fill/w_800,h_1080,fp_0.56_0.51,q_90,enc_avif,quality_auto/6cead5_d95fecdd1a9640389bd9df78870c4595~mv2.jpg',cat:'other'},
+  {src:'https://static.wixstatic.com/media/6cead5_30bd66c6715e4d7aaafc193e3ee196d7~mv2.jpg/v1/fill/w_800,h_1076,fp_0.38_0.53,q_90,enc_avif,quality_auto/6cead5_30bd66c6715e4d7aaafc193e3ee196d7~mv2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_027e634892f247d0bb586d88ed7935b1~mv2.jpg/v1/fill/w_800,h_1080,fp_0.48_0.29,q_90,enc_avif,quality_auto/6cead5_027e634892f247d0bb586d88ed7935b1~mv2.jpg',cat:'fashion'},
+  {src:'https://static.wixstatic.com/media/6cead5_1d95f19c4f0f4e918bad96bcb0da13da~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,fp_0.61_0.21,q_90,enc_avif,quality_auto/6cead5_1d95f19c4f0f4e918bad96bcb0da13da~mv2_d_4000_6000_s_4_2.jpg',cat:'portrait'},
+  {src:'https://static.wixstatic.com/media/6cead5_65b2800e01674e9a8708e0564d2af379~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,fp_0.51_0.23,q_90,enc_avif,quality_auto/6cead5_65b2800e01674e9a8708e0564d2af379~mv2_d_4000_6000_s_4_2.jpg',cat:'other'},
+];
+
+// Hero grid
+(function(){
+  const g=document.getElementById('heroGrid');
+  IMGS.slice(0,10).forEach(i=>{const d=document.createElement('div');d.className='hero-cell';d.style.backgroundImage=`url('${i.src}')`;g.appendChild(d);});
+})();
+
+let visImgs=[...IMGS];
+function buildGallery(imgs){
+  const g=document.getElementById('galleryGrid');g.innerHTML='';
+  visImgs=imgs;
+  const srcs=imgs.map(i=>i.src);
+  imgs.forEach((img,idx)=>{
+    const d=document.createElement('div');d.className='thumb';
+    d.innerHTML=`<img src="${img.src}" loading="lazy" alt="Photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>`;
+    d.onclick=()=>openLB(srcs,idx);
+    g.appendChild(d);
+  });
+}
+function filterGallery(cat,btn){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  buildGallery(cat==='all'?IMGS:IMGS.filter(i=>i.cat===cat));
+}
+buildGallery(IMGS);
+</script>
+</body>
+</html>

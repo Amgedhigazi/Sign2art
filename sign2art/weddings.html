@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weddings — Sign²Art</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="service-page-hero">
+  <div class="service-page-hero-bg" style="background-image:url('https://static.wixstatic.com/media/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_1600,h_800,q_85,enc_avif,quality_auto/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg')"></div>
+  <div class="service-page-hero-overlay"></div>
+  <div class="service-page-hero-content">
+    <a class="back-link" href="index.html#services">← Back to Services</a>
+    <h1 class="service-page-title">Wedding Photography</h1>
+    <p class="service-page-sub">Timeless moments · Love stories · Celebrations of life</p>
+  </div>
+</div>
+
+<div class="service-page-body">
+  <div class="service-event fade-up">
+    <h2>Wedding Gallery</h2>
+    <p>Every wedding tells a unique love story. Through careful observation and the right moment, we capture the emotions, details, and joy that make your day unforgettable.</p>
+    <div class="masonry" id="weddingGrid"></div>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script>
+const imgs = [
+  'https://static.wixstatic.com/media/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg',
+  'https://static.wixstatic.com/media/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg/v1/fill/w_800,h_1080,q_90,enc_avif,quality_auto/6cead5_96873af5397b45faa2da63d2a8bd153f~mv2.jpg',
+  'https://static.wixstatic.com/media/6cead5_40ce869ee0fc41ae9fd77f4c7e3fc66e~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_40ce869ee0fc41ae9fd77f4c7e3fc66e~mv2_d_4000_6000_s_4_2.jpg',
+  'https://static.wixstatic.com/media/6cead5_1b687756abc946fcb42e4ea8338673a2~mv2.jpg/v1/fill/w_800,h_1080,q_90,enc_avif,quality_auto/6cead5_1b687756abc946fcb42e4ea8338673a2~mv2.jpg',
+  'https://static.wixstatic.com/media/6cead5_bf68a687729c4c63bcea8a1d4e285304~mv2.jpg/v1/fill/w_800,h_1080,q_90,enc_avif,quality_auto/6cead5_bf68a687729c4c63bcea8a1d4e285304~mv2.jpg',
+  'https://static.wixstatic.com/media/6cead5_30bd66c6715e4d7aaafc193e3ee196d7~mv2.jpg/v1/fill/w_800,h_1076,q_90,enc_avif,quality_auto/6cead5_30bd66c6715e4d7aaafc193e3ee196d7~mv2.jpg',
+  'https://static.wixstatic.com/media/6cead5_1d95f19c4f0f4e918bad96bcb0da13da~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_1d95f19c4f0f4e918bad96bcb0da13da~mv2_d_4000_6000_s_4_2.jpg',
+  'https://static.wixstatic.com/media/6cead5_104edf936de843baa9200fa97563cb02~mv2.jpg/v1/fill/w_800,h_1080,q_90,enc_avif,quality_auto/6cead5_104edf936de843baa9200fa97563cb02~mv2.jpg',
+  'https://static.wixstatic.com/media/6cead5_82c20cd28e9c47169a3e40758edbb603~mv2_d_1500_2250_s_2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_82c20cd28e9c47169a3e40758edbb603~mv2_d_1500_2250_s_2.jpg',
+];
+
+const g = document.getElementById('weddingGrid');
+imgs.forEach((src, idx) => {
+  const d = document.createElement('div'); d.className = 'thumb';
+  d.innerHTML = `<img src="${src}" loading="lazy" alt="Wedding photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>`;
+  d.onclick = () => openLB(imgs, idx);
+  g.appendChild(d);
+});
+</script>
+</body>
+</html>
