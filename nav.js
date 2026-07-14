@@ -78,4 +78,12 @@
   // Scroll fade
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+  // Hover-to-play service card videos
+  document.querySelectorAll('.service-card.has-video').forEach(card=>{
+    const video = card.querySelector('.service-video');
+    if(!video) return;
+    card.addEventListener('mouseenter',()=>{video.play().catch(()=>{});});
+    card.addEventListener('mouseleave',()=>{video.pause();video.currentTime=0;});
+  });
 })();
