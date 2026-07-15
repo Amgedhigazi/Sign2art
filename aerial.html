@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aerial Photography — Sign²Art</title>
+<link rel="stylesheet" href="style.css">
+<style>.hero-bg-aerial{background-image:url('images/aerial/_dsc7285-copy.jpg');}</style>
+</head>
+<body>
+
+<div class="service-page-hero">
+  <div class="service-page-hero-bg hero-bg-aerial"></div>
+  <div class="service-page-hero-overlay"></div>
+  <div class="service-page-hero-content">
+    <a class="back-link" href="index.html#services">← Back to Services</a>
+    <h1 class="service-page-title">Aerial Photography</h1>
+    <p class="service-page-sub">Bird's-eye perspectives · Cityscapes · Landscapes from above</p>
+  </div>
+</div>
+
+<div class="service-page-body">
+
+  <div class="service-video fade-up">
+    <video controls muted loop playsinline style="width:100%;max-height:560px;object-fit:cover;display:block;background:#000;">
+      <source src="videos/aerial.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Aerial Gallery</h2>
+    <p>From soaring cityscapes at golden hour to dramatic skies captured from altitude — aerial photography that reveals the world from a perspective few ever see.</p>
+    <div class="masonry" id="aerialGrid"></div>
+  </div>
+
+</div>
+
+<script src="nav.js"></script>
+<script>
+const imgs = [
+  'images/aerial/_dsc7285-copy.jpg',
+  'images/aerial/_dsc72851.jpg',
+  'images/aerial/dsc_0827.jpg',
+  'images/aerial/dsc_1064.jpg',
+  'images/aerial/dsc_6098.jpg',
+  'images/aerial/dsc_6105.jpg',
+  'images/aerial/dsc_6187.jpg',
+  'images/aerial/dsc_6198.jpg',
+];
+
+const g = document.getElementById('aerialGrid');
+imgs.forEach((src, idx) => {
+  const d = document.createElement('div'); d.className = 'thumb';
+  d.innerHTML = '<img src="' + src + '" loading="lazy" alt="Aerial photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
+  d.onclick = () => openLB(imgs, idx);
+  g.appendChild(d);
+});
+</script>
+</body>
+</html>
