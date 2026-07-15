@@ -20,17 +20,28 @@
 .pkg{border:0.5px solid rgba(201,169,110,0.15);position:relative;background:#fafafa;display:flex;flex-direction:column;}
 .pkg-img{height:260px;background-size:cover;background-position:center;position:relative;flex-shrink:0;}
 .pkg-img--top{background-position:center 20%;}
-.svc-img--top{background-position:center top;}
 .pkg-badge{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#1a1a1a;background:#c9a96e;padding:5px 12px;z-index:1;}
 .pkg-body{padding:32px 32px 28px;display:flex;flex-direction:column;flex:1;}
 .pkg-name{font-family:'Playfair Display',serif;font-size:21px;color:#1a1a1a;margin:0 0 4px;}
 .pkg-price{font-size:40px;font-weight:300;color:#c9a96e;margin:14px 0 2px;letter-spacing:-1px;line-height:1;}
 .pkg-price sup{font-size:18px;vertical-align:super;}
-.pkg-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:22px;}
+.pkg-deposit{font-size:11px;color:#888;margin-bottom:2px;}
+.pkg-deposit strong{color:#c9a96e;}
+.pkg-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:22px;margin-top:4px;}
 .pkg-divider{height:0.5px;background:rgba(201,169,110,0.25);margin-bottom:20px;}
 .pkg-list{list-style:none;padding:0;margin:0 0 28px;flex:1;}
 .pkg-list li{font-size:13px;line-height:1.9;color:#666;padding-left:18px;position:relative;}
 .pkg-list li::before{content:'—';position:absolute;left:0;color:#c9a96e;}
+
+/* ——— Card image backgrounds ——— */
+.bg-portrait-basic{background-image:url('https://static.wixstatic.com/media/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg');}
+.bg-portrait-classic{background-image:url('https://static.wixstatic.com/media/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg');}
+.bg-fashion-day{background-image:url('https://static.wixstatic.com/media/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg');}
+.bg-masterclass-photo{background-image:url('https://static.wixstatic.com/media/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg');}
+.bg-masterclass-edit{background-image:url('https://static.wixstatic.com/media/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg');}
+.bg-svc-fashion{background-image:url('https://static.wixstatic.com/media/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg');background-position:center top;}
+.bg-svc-aerial{background-image:url('https://static.wixstatic.com/media/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg');}
+.bg-svc-video{background-image:url('https://static.wixstatic.com/media/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg');}
 
 /* ——— À la carte cards ——— */
 .services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:72px;}
@@ -39,8 +50,11 @@
 .svc-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column;}
 .svc-name{font-family:'Playfair Display',serif;font-size:17px;color:#1a1a1a;margin:0 0 4px;}
 .svc-price{font-size:26px;font-weight:300;color:#c9a96e;margin:10px 0 2px;}
+.svc-deposit{font-size:11px;color:#888;margin-bottom:2px;}
+.svc-deposit strong{color:#c9a96e;}
 .svc-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#aaa;}
 .svc-desc{font-size:12px;line-height:1.85;color:#888;margin-top:10px;flex:1;}
+.svc-body .btn{margin-top:16px;}
 
 /* ——— Booking CTA ——— */
 .booking-cta{text-align:center;padding:64px 40px;background:#0d0d0d;margin-top:16px;}
@@ -48,22 +62,65 @@
 .booking-cta p{font-size:14px;line-height:2;color:#666;max-width:480px;margin:0 auto 32px;}
 .booking-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 
+/* =================== BOOKING MODAL =================== */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;align-items:center;justify-content:center;padding:20px;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#fff;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;font-size:24px;cursor:pointer;color:#999;line-height:1;z-index:1;}
+.modal-close:hover{color:#1a1a1a;}
+
+.modal-hero{height:200px;background-size:cover;background-position:center;}
+.modal-body{padding:32px;}
+
+.modal-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin:0 0 6px;}
+.modal-title{font-family:'Playfair Display',serif;font-size:24px;color:#1a1a1a;margin:0 0 20px;}
+
+.deposit-box{background:#0d0d0d;padding:20px 24px;margin-bottom:28px;text-align:center;}
+.deposit-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+.deposit-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#777;}
+.deposit-total{font-size:13px;color:#555;}
+.deposit-total strong{color:#c9a96e;}
+.deposit-amount{font-family:'Playfair Display',serif;font-size:42px;color:#c9a96e;margin:8px 0 4px;letter-spacing:-1px;}
+.deposit-amount sup{font-size:20px;vertical-align:super;}
+.deposit-note{font-size:11px;color:#555;}
+
+.pay-section-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#999;margin:0 0 14px;}
+
+/* PayPal button */
+.paypal-btn{display:flex;align-items:center;justify-content:center;gap:10px;background:#FFC439;color:#003087;font-size:14px;font-weight:700;padding:14px 24px;width:100%;border:none;cursor:pointer;text-decoration:none;margin-bottom:20px;transition:background .2s;}
+.paypal-btn:hover{background:#f0b429;}
+.paypal-logo{font-size:18px;font-style:italic;font-weight:900;letter-spacing:-1px;}
+.paypal-logo span{color:#009cde;}
+
+/* Divider */
+.pay-or{display:flex;align-items:center;gap:12px;margin-bottom:20px;}
+.pay-or::before,.pay-or::after{content:'';flex:1;height:0.5px;background:rgba(0,0,0,0.12);}
+.pay-or-text{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#aaa;}
+
+/* Bank transfer */
+.bank-box{border:0.5px solid rgba(201,169,110,0.25);padding:20px;}
+.bank-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:0.5px solid rgba(0,0,0,0.06);font-size:13px;}
+.bank-row:last-child{border-bottom:none;}
+.bank-key{color:#aaa;font-size:11px;letter-spacing:1px;text-transform:uppercase;}
+.bank-val{color:#1a1a1a;font-weight:500;text-align:right;}
+
+.modal-note{margin-top:20px;font-size:12px;line-height:1.8;color:#888;text-align:center;}
+.modal-note a{color:#c9a96e;}
+
 /* ——— Dark mode ——— */
 @media(prefers-color-scheme:dark){
   .sessions-intro h2,.sessions-heading,.pkg-name,.svc-name{color:#e0e0e0;}
   .pkg,.svc{background:#111;border-color:rgba(201,169,110,0.1);}
-  .pkg-name{color:#e0e0e0;}
+  .modal-box{background:#111;}
+  .modal-title{color:#e0e0e0;}
+  .bank-box{border-color:rgba(201,169,110,0.15);}
+  .bank-row{border-color:rgba(255,255,255,0.06);}
+  .bank-val{color:#e0e0e0;}
+  .pay-or::before,.pay-or::after{background:rgba(255,255,255,0.1);}
 }
-@media(max-width:900px){
-  .packages-grid-3{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:760px){
-  .packages-grid{grid-template-columns:1fr;}
-  .services-list{grid-template-columns:1fr 1fr;}
-}
-@media(max-width:480px){
-  .packages-grid-3,.services-list{grid-template-columns:1fr;}
-}
+@media(max-width:900px){.packages-grid-3{grid-template-columns:1fr 1fr;}}
+@media(max-width:760px){.packages-grid{grid-template-columns:1fr;}.services-list{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.packages-grid-3,.services-list{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -82,7 +139,7 @@
 
   <div class="sessions-intro fade-up">
     <h2>Let's Create Something Beautiful</h2>
-    <p>Every session is crafted to bring your vision to life. Whether it's a portrait, fashion shoot, or a full production day — contact us and we'll tailor the perfect package for you.</p>
+    <p>Every session is crafted to bring your vision to life. Secure your date with a 30% deposit — pay the remaining 70% on the day of the session.</p>
   </div>
 
   <!-- ① PORTRAIT PACKAGES -->
@@ -94,12 +151,13 @@
   <div class="packages-grid fade-up">
 
     <div class="pkg">
-      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg">
+      <div class="pkg-img bg-portrait-basic">
         <span class="pkg-badge">Popular</span>
       </div>
       <div class="pkg-body">
         <p class="pkg-name">Basic Collection</p>
         <div class="pkg-price"><sup>€</sup>400</div>
+        <p class="pkg-deposit">Deposit to book: <strong>€120</strong></p>
         <p class="pkg-duration">1.5 – 2 hours · Studio</p>
         <div class="pkg-divider"></div>
         <ul class="pkg-list">
@@ -109,17 +167,18 @@
           <li>Full professional retouching</li>
           <li>Delivery within 2 weeks</li>
         </ul>
-        <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Basic%20Collection%20Booking">Book This Package</a>
+        <button type="button" class="btn btn-gold" onclick="openBooking('Basic Collection', 400, 120, 'bg-portrait-basic')">Book This Package</button>
       </div>
     </div>
 
     <div class="pkg">
-      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg">
+      <div class="pkg-img bg-portrait-classic">
         <span class="pkg-badge">Premium</span>
       </div>
       <div class="pkg-body">
         <p class="pkg-name">Classic Collection</p>
         <div class="pkg-price"><sup>€</sup>750</div>
+        <p class="pkg-deposit">Deposit to book: <strong>€225</strong></p>
         <p class="pkg-duration">2 – 3 hours · Studio</p>
         <div class="pkg-divider"></div>
         <ul class="pkg-list">
@@ -129,7 +188,7 @@
           <li>Full professional retouching</li>
           <li>Delivery within 3 weeks</li>
         </ul>
-        <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Classic%20Collection%20Booking">Book This Package</a>
+        <button type="button" class="btn btn-gold" onclick="openBooking('Classic Collection', 750, 225, 'bg-portrait-classic')">Book This Package</button>
       </div>
     </div>
 
@@ -144,10 +203,11 @@
   <div class="packages-grid-3 fade-up">
 
     <div class="pkg">
-      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg"></div>
+      <div class="pkg-img bg-fashion-day"></div>
       <div class="pkg-body">
         <p class="pkg-name">Fashion Shooting</p>
         <div class="pkg-price"><sup>€</sup>770</div>
+        <p class="pkg-deposit">Deposit to book: <strong>€231</strong></p>
         <p class="pkg-duration">Full day · 8 hours</p>
         <div class="pkg-divider"></div>
         <ul class="pkg-list">
@@ -155,15 +215,16 @@
           <li>All usage rights to photos &amp; source files</li>
           <li>Retouching &amp; models billed separately</li>
         </ul>
-        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Fashion%20Shooting%20Enquiry">Get in Touch</a>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Fashion Shooting', 770, 231, 'bg-fashion-day')">Book This Package</button>
       </div>
     </div>
 
     <div class="pkg">
-      <div class="pkg-img pkg-img--top" data-bg="https://static.wixstatic.com/media/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg"></div>
+      <div class="pkg-img pkg-img--top bg-masterclass-photo"></div>
       <div class="pkg-body">
         <p class="pkg-name">Masterclass — Photo &amp; Editing</p>
         <div class="pkg-price"><sup>€</sup>690</div>
+        <p class="pkg-deposit">Deposit to book: <strong>€207</strong></p>
         <p class="pkg-duration">3 days · 1 participant</p>
         <div class="pkg-divider"></div>
         <ul class="pkg-list">
@@ -171,15 +232,16 @@
           <li>Professional retouching workflow</li>
           <li>Remote Q&amp;A support after training</li>
         </ul>
-        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Masterclass%20Booking">Get in Touch</a>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Masterclass — Photo &amp; Editing', 690, 207, 'bg-masterclass-photo')">Book This Package</button>
       </div>
     </div>
 
     <div class="pkg">
-      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg"></div>
+      <div class="pkg-img bg-masterclass-edit"></div>
       <div class="pkg-body">
         <p class="pkg-name">Masterclass — Art Editing</p>
         <div class="pkg-price"><sup>€</sup>550</div>
+        <p class="pkg-deposit">Deposit to book: <strong>€165</strong></p>
         <p class="pkg-duration">3 days · Remote or in-person</p>
         <div class="pkg-divider"></div>
         <ul class="pkg-list">
@@ -187,7 +249,7 @@
           <li>Advanced color grading techniques</li>
           <li>Skype / in-person sessions available</li>
         </ul>
-        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Art%20Editing%20Masterclass">Get in Touch</a>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Masterclass — Art Editing', 550, 165, 'bg-masterclass-edit')">Book This Package</button>
       </div>
     </div>
 
@@ -202,32 +264,38 @@
   <div class="services-list fade-up">
 
     <div class="svc">
-      <div class="svc-img svc-img--top" data-bg="https://static.wixstatic.com/media/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg"></div>
+      <div class="svc-img bg-svc-fashion"></div>
       <div class="svc-body">
         <p class="svc-name">Fashion Photography</p>
         <p class="svc-price">€190</p>
+        <p class="svc-deposit">Deposit: <strong>€57</strong></p>
         <p class="svc-duration">2 hours</p>
         <p class="svc-desc">Focused fashion session — perfect for lookbooks, profiles and styled shoots.</p>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Fashion Photography', 190, 57, 'bg-svc-fashion')">Book</button>
       </div>
     </div>
 
     <div class="svc">
-      <div class="svc-img" data-bg="https://static.wixstatic.com/media/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg"></div>
+      <div class="svc-img bg-svc-aerial"></div>
       <div class="svc-body">
         <p class="svc-name">Aerial Photography</p>
         <p class="svc-price">€200</p>
+        <p class="svc-deposit">Deposit: <strong>€60</strong></p>
         <p class="svc-duration">3 hours</p>
         <p class="svc-desc">Drone photography for events, real estate, landscapes and commercial projects.</p>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Aerial Photography', 200, 60, 'bg-svc-aerial')">Book</button>
       </div>
     </div>
 
     <div class="svc">
-      <div class="svc-img" data-bg="https://static.wixstatic.com/media/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg"></div>
+      <div class="svc-img bg-svc-video"></div>
       <div class="svc-body">
         <p class="svc-name">Video Editing</p>
         <p class="svc-price">€249</p>
+        <p class="svc-deposit">Deposit: <strong>€75</strong></p>
         <p class="svc-duration">4 hours</p>
         <p class="svc-desc">Professional video editing — colour grading, cuts, transitions and finishing.</p>
+        <button type="button" class="btn btn-outline" onclick="openBooking('Video Editing', 249, 75, 'bg-svc-video')">Book</button>
       </div>
     </div>
 
@@ -235,20 +303,117 @@
 
   <!-- BOOKING CTA -->
   <div class="booking-cta fade-up">
-    <h2>Ready to Book?</h2>
-    <p>Send a message with your session idea, preferred dates and any references — we'll get back to you within 24 hours to plan everything together.</p>
+    <h2>Questions Before You Book?</h2>
+    <p>Not sure which session fits your vision? Send a message and we'll help you choose the right package.</p>
     <div class="booking-cta-btns">
-      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Session%20Booking%20Enquiry">Email to Book</a>
-      <a class="btn btn-outline" href="index.html#contact">Contact Page</a>
+      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Session%20Enquiry">Email Us</a>
     </div>
   </div>
 
 </div>
 
+<!-- =================== BOOKING MODAL =================== -->
+<div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeBooking()" aria-label="Close">×</button>
+
+    <div class="modal-hero" id="modalHero"></div>
+
+    <div class="modal-body">
+      <p class="modal-eyebrow">Secure Your Session</p>
+      <h2 class="modal-title" id="modalTitle"></h2>
+
+      <div class="deposit-box">
+        <div class="deposit-row">
+          <span class="deposit-label">Total Session Price</span>
+          <span class="deposit-total">€<span id="modalTotal"></span></span>
+        </div>
+        <div class="deposit-amount"><sup>€</sup><span id="modalDeposit"></span></div>
+        <div class="deposit-note">30% deposit due now · 70% on the day</div>
+      </div>
+
+      <!-- PayPal -->
+      <p class="pay-section-title">Pay Your Deposit Online</p>
+      <a class="paypal-btn" id="paypalBtn" href="#" target="_blank" rel="noopener">
+        <span class="paypal-logo">Pay<span>Pal</span></span>
+        Pay €<span id="paypalAmount"></span> deposit with PayPal
+      </a>
+
+      <!-- Divider -->
+      <div class="pay-or"><span class="pay-or-text">or</span></div>
+
+      <!-- Bank Transfer -->
+      <p class="pay-section-title">Bank Transfer</p>
+      <div class="bank-box">
+        <div class="bank-row">
+          <span class="bank-key">Account Name</span>
+          <span class="bank-val">Amged Higazi</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">IBAN</span>
+          <span class="bank-val" id="bankIBAN">DE00 0000 0000 0000 0000 00</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">BIC / SWIFT</span>
+          <span class="bank-val" id="bankBIC">XXXXXXXXXX</span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">Amount</span>
+          <span class="bank-val">€<span id="bankAmount"></span></span>
+        </div>
+        <div class="bank-row">
+          <span class="bank-key">Reference</span>
+          <span class="bank-val" id="bankRef">SIGN2ART — </span>
+        </div>
+      </div>
+
+      <p class="modal-note">
+        After payment, email your receipt to <a href="mailto:sign2art@gmail.com">sign2art@gmail.com</a>
+        with your preferred session dates. We'll confirm within 24 hours and plan everything together.
+      </p>
+    </div>
+  </div>
+</div>
+
 <script src="nav.js"></script>
 <script>
-document.querySelectorAll('[data-bg]').forEach(el => {
-  el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+// ——— Update these with your real PayPal.me username and bank details ———
+const PAYPAL_ME = 'AmgedHigazi';   // → https://paypal.me/AmgedHigazi
+const BANK_IBAN = 'DE00 0000 0000 0000 0000 00'; // replace with real IBAN
+const BANK_BIC  = 'XXXXXXXXXX';                   // replace with real BIC
+
+function openBooking(name, total, deposit, imgClass) {
+  document.getElementById('modalTitle').textContent   = name;
+  document.getElementById('modalTotal').textContent   = total;
+  document.getElementById('modalDeposit').textContent = deposit;
+  document.getElementById('paypalAmount').textContent = deposit;
+  document.getElementById('bankAmount').textContent   = deposit;
+  document.getElementById('bankRef').textContent      = 'SIGN2ART — ' + name;
+  document.getElementById('bankIBAN').textContent     = BANK_IBAN;
+  document.getElementById('bankBIC').textContent      = BANK_BIC;
+
+  // hero image mirrors the card image
+  const hero = document.getElementById('modalHero');
+  hero.className = 'modal-hero ' + imgClass;
+
+  // PayPal.me link: pre-fills amount and currency
+  document.getElementById('paypalBtn').href =
+    'https://www.paypal.com/paypalme/' + PAYPAL_ME + '/' + deposit + 'EUR';
+
+  document.getElementById('bookingModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeBooking() {
+  document.getElementById('bookingModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('bookingModal').addEventListener('click', function(e) {
+  if (e.target === this) closeBooking();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBooking();
 });
 </script>
 </body>
