@@ -209,6 +209,9 @@
 .aw-hint{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#2e2e2e;}
 .aw-eyebrow-inline{margin:0;}
 .hero-bg-cambodia{background-image:url('images/cambodia/cam68.jpg');}
+.dance-sub-divider{margin-top:24px;}
+.dance-sub-divider .eyebrow{white-space:nowrap;}
+.dance-sub-title{font-size:clamp(18px,2.8vw,30px);}
 .event-video-el{width:100%;max-height:560px;object-fit:cover;display:block;background:#000;}
 
 /* Responsive */
@@ -397,15 +400,48 @@
     <div class="aw-intro-count" aria-hidden="true">26</div>
   </div>
 
-  <!-- Queens Dance grid -->
+  <!-- Queens Dance flip-book -->
   <div class="aw-book-wrap fade-up">
-    <div class="masonry" id="grid-queens"></div>
+    <div class="aw-book-frame">
+      <div class="aw-book" id="qdBook">
+        <div class="aw-left">
+          <img class="aw-pg-img" id="qdImgLeft" src="images/cambodia-queens/_DSC4527.jpg" alt="Queens Dance">
+          <div class="aw-gutter aw-gutter-l"></div>
+        </div>
+        <div class="aw-spine"></div>
+        <div class="aw-right">
+          <img class="aw-pg-img" id="qdImgRight" src="images/cambodia-queens/_DSC4559.jpg" alt="Queens Dance">
+          <div class="aw-gutter aw-gutter-r"></div>
+        </div>
+        <div id="qdFlipper">
+          <div class="aw-face aw-face-front">
+            <img class="aw-pg-img" id="qdFlipFront" src="images/cambodia-queens/_DSC4559.jpg" alt="">
+            <div class="aw-turn-shadow" id="qdTurnShadow"></div>
+          </div>
+          <div class="aw-face aw-face-back">
+            <img class="aw-pg-img" id="qdFlipBack" src="" alt="">
+          </div>
+        </div>
+        <div id="qdFoldShadow"></div>
+        <div class="aw-pg-nums">
+          <span id="qdLblL">01</span>
+          <span id="qdLblR">02</span>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="aw-progress"><div class="aw-progress-fill" id="qdProgress"></div></div>
+  <div class="aw-controls">
+    <button type="button" class="aw-btn" id="qdBtnPrev" disabled title="Previous spread">&#8249;</button>
+    <span class="aw-indicator" id="qdLabel">Photos 1–2</span>
+    <button type="button" class="aw-btn" id="qdBtnNext" title="Next spread">&#8250;</button>
+  </div>
+  <p class="aw-hint">Swipe &nbsp;·&nbsp; Click page halves &nbsp;·&nbsp; Use buttons</p>
 
   <!-- Farmer Dance divider -->
-  <div class="aw-header fade-up" style="margin-top:24px;">
+  <div class="aw-header dance-sub-divider fade-up">
     <div class="section-line"></div>
-    <span class="eyebrow aw-eyebrow-inline" style="white-space:nowrap;">Sub-section</span>
+    <span class="eyebrow aw-eyebrow-inline">Sub-section</span>
     <div class="section-line"></div>
   </div>
 
@@ -413,7 +449,7 @@
   <div class="aw-intro fade-up">
     <div>
       <p class="aw-intro-meta">Folk Performance</p>
-      <h2 class="aw-intro-title" style="font-size:clamp(18px,2.8vw,30px);">Cambodian<br><em>Farmer Dance</em></h2>
+      <h2 class="aw-intro-title dance-sub-title">Cambodian<br><em>Farmer Dance</em></h2>
       <p class="aw-intro-desc">
         A folk performance depicting the life of Khmer farmers — women in blue sampot
         costumes carrying wicker harvest baskets, men in red-headband attire enacting
@@ -423,10 +459,43 @@
     <div class="aw-intro-count" aria-hidden="true">21</div>
   </div>
 
-  <!-- Farmer Dance grid -->
+  <!-- Farmer Dance flip-book -->
   <div class="aw-book-wrap fade-up">
-    <div class="masonry" id="grid-farmer"></div>
+    <div class="aw-book-frame">
+      <div class="aw-book" id="fdBook">
+        <div class="aw-left">
+          <img class="aw-pg-img" id="fdImgLeft" src="images/cambodia-farmer/_DSC4385.jpg" alt="Farmer Dance">
+          <div class="aw-gutter aw-gutter-l"></div>
+        </div>
+        <div class="aw-spine"></div>
+        <div class="aw-right">
+          <img class="aw-pg-img" id="fdImgRight" src="images/cambodia-farmer/_DSC4386.jpg" alt="Farmer Dance">
+          <div class="aw-gutter aw-gutter-r"></div>
+        </div>
+        <div id="fdFlipper">
+          <div class="aw-face aw-face-front">
+            <img class="aw-pg-img" id="fdFlipFront" src="images/cambodia-farmer/_DSC4386.jpg" alt="">
+            <div class="aw-turn-shadow" id="fdTurnShadow"></div>
+          </div>
+          <div class="aw-face aw-face-back">
+            <img class="aw-pg-img" id="fdFlipBack" src="" alt="">
+          </div>
+        </div>
+        <div id="fdFoldShadow"></div>
+        <div class="aw-pg-nums">
+          <span id="fdLblL">01</span>
+          <span id="fdLblR">02</span>
+        </div>
+      </div>
+    </div>
   </div>
+  <div class="aw-progress"><div class="aw-progress-fill" id="fdProgress"></div></div>
+  <div class="aw-controls">
+    <button type="button" class="aw-btn" id="fdBtnPrev" disabled title="Previous spread">&#8249;</button>
+    <span class="aw-indicator" id="fdLabel">Photos 1–2</span>
+    <button type="button" class="aw-btn" id="fdBtnNext" title="Next spread">&#8250;</button>
+  </div>
+  <p class="aw-hint">Swipe &nbsp;·&nbsp; Click page halves &nbsp;·&nbsp; Use buttons</p>
 
 </section>
 
@@ -634,72 +703,138 @@ makeGrid('grid-redbull',redbull);
 makeGrid('grid-schools',schools);
 
 /* ════════════════════════════════════════════════════
-   CAMBODIAN DANCE GRIDS
+   FLIP-BOOK FACTORY  (reused for every new book section)
 ════════════════════════════════════════════════════ */
-(function(){
-  var queensImgs=[
-    'images/cambodia-queens/_DSC4527.jpg',
-    'images/cambodia-queens/_DSC4559.jpg',
-    'images/cambodia-queens/_DSC4569.jpg',
-    'images/cambodia-queens/_DSC4589.jpg',
-    'images/cambodia-queens/_DSC4627.jpg',
-    'images/cambodia-queens/_DSC4635.jpg',
-    'images/cambodia-queens/_DSC4638.jpg',
-    'images/cambodia-queens/_DSC4651.jpg',
-    'images/cambodia-queens/_DSC4658.jpg',
-    'images/cambodia-queens/_DSC4673.jpg',
-    'images/cambodia-queens/_DSC4682.jpg',
-    'images/cambodia-queens/_DSC4690.jpg',
-    'images/cambodia-queens/_DSC4692.jpg',
-    'images/cambodia-queens/_DSC4698.jpg',
-    'images/cambodia-queens/_DSC4704.jpg',
-    'images/cambodia-queens/_DSC4707.jpg',
-    'images/cambodia-queens/_DSC4712.jpg',
-    'images/cambodia-queens/_DSC4719.jpg',
-    'images/cambodia-queens/_DSC4733.jpg',
-    'images/cambodia-queens/_DSC4739.jpg',
-    'images/cambodia-queens/_DSC4767.jpg',
-    'images/cambodia-queens/_DSC4775%20copy.jpg',
-    'images/cambodia-queens/_DSC4777.jpg',
-    'images/cambodia-queens/_DSC4786.jpg',
-    'images/cambodia-queens/_DSC4802.jpg',
-    'images/cambodia-queens/_DSC4835.jpg'
-  ];
-  var farmerImgs=[
-    'images/cambodia-farmer/_DSC4385.jpg',
-    'images/cambodia-farmer/_DSC4386.jpg',
-    'images/cambodia-farmer/_DSC4388.jpg',
-    'images/cambodia-farmer/_DSC4397.jpg',
-    'images/cambodia-farmer/_DSC4404.jpg',
-    'images/cambodia-farmer/_DSC4413.jpg',
-    'images/cambodia-farmer/_DSC4415.jpg',
-    'images/cambodia-farmer/_DSC4416.jpg',
-    'images/cambodia-farmer/_DSC4420.jpg',
-    'images/cambodia-farmer/_DSC4424.jpg',
-    'images/cambodia-farmer/_DSC4427.jpg',
-    'images/cambodia-farmer/_DSC4430.jpg',
-    'images/cambodia-farmer/_DSC4433.jpg',
-    'images/cambodia-farmer/_DSC4439.jpg',
-    'images/cambodia-farmer/_DSC4446.jpg',
-    'images/cambodia-farmer/_DSC4449.jpg',
-    'images/cambodia-farmer/_DSC4450.jpg',
-    'images/cambodia-farmer/_DSC4452.jpg',
-    'images/cambodia-farmer/_DSC4453.jpg',
-    'images/cambodia-farmer/_DSC4454.jpg',
-    'images/cambodia-farmer/_DSC4457.jpg'
-  ];
-  function buildDanceGrid(id,srcs){
-    var g=document.getElementById(id);
-    srcs.forEach(function(src,idx){
-      var d=document.createElement('div'); d.className='thumb';
-      d.innerHTML='<img src="'+src+'" loading="lazy" alt="Cambodia dance"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
-      d.onclick=function(){openLB(srcs,idx);};
-      g.appendChild(d);
+function makeFlipBook(p,PAGES){
+  var TOTAL_SPREADS=Math.ceil(PAGES.length/2);
+  var spreadIdx=0,busy=false;
+  var DUR=880,EASE='cubic-bezier(0.645,0.045,0.355,1.000)';
+
+  var book       =document.getElementById(p+'Book');
+  var imgLeft    =document.getElementById(p+'ImgLeft');
+  var imgRight   =document.getElementById(p+'ImgRight');
+  var flipper    =document.getElementById(p+'Flipper');
+  var flipFront  =document.getElementById(p+'FlipFront');
+  var flipBack   =document.getElementById(p+'FlipBack');
+  var foldShadow =document.getElementById(p+'FoldShadow');
+  var turnShadow =document.getElementById(p+'TurnShadow');
+  var btnPrev    =document.getElementById(p+'BtnPrev');
+  var btnNext    =document.getElementById(p+'BtnNext');
+  var label      =document.getElementById(p+'Label');
+  var progress   =document.getElementById(p+'Progress');
+  var lblL       =document.getElementById(p+'LblL');
+  var lblR       =document.getElementById(p+'LblR');
+
+  function L(n){return PAGES[n*2]   ||'';}
+  function R(n){return PAGES[n*2+1] ||'';}
+  function preload(s){if(s){new Image().src=s;}}
+
+  function instant(el,v){el.style.transition='none';el.style.transform=v;void el.offsetWidth;}
+  function animTo(el,v,cb){
+    el.style.transition='transform '+DUR+'ms '+EASE;
+    el.style.transform=v;
+    var h=function(){el.removeEventListener('transitionend',h);cb();};
+    el.addEventListener('transitionend',h);
+  }
+
+  function ui(){
+    var p1=spreadIdx*2+1,p2=R(spreadIdx)?spreadIdx*2+2:null;
+    label.textContent=p2?'Photos '+p1+'–'+p2:'Photo '+p1;
+    lblL.textContent=String(p1).padStart(2,'0');
+    lblR.textContent=p2?String(p2).padStart(2,'0'):'';
+    btnPrev.disabled=spreadIdx===0;
+    btnNext.disabled=spreadIdx>=TOTAL_SPREADS-1;
+    progress.style.width=((spreadIdx+1)/TOTAL_SPREADS*100).toFixed(1)+'%';
+  }
+
+  function fwd(){
+    if(busy||spreadIdx>=TOTAL_SPREADS-1)return;
+    busy=true;var next=spreadIdx+1;
+    flipFront.src=R(spreadIdx);flipBack.src=L(next);imgRight.src=R(next);
+    turnShadow.style.opacity='1';foldShadow.style.opacity='0';
+    var tid=setTimeout(function(){if(busy)foldShadow.style.opacity='0.9';},DUR*0.28);
+    instant(flipper,'rotateY(0deg)');
+    animTo(flipper,'rotateY(-180deg)',function(){
+      clearTimeout(tid);spreadIdx=next;
+      imgLeft.src=L(spreadIdx);flipFront.src=R(spreadIdx);
+      instant(flipper,'rotateY(0deg)');
+      foldShadow.style.transition='none';foldShadow.style.opacity='0';
+      turnShadow.style.opacity='0';busy=false;ui();
+      preload(L(spreadIdx+1));preload(R(spreadIdx+1));
     });
   }
-  buildDanceGrid('grid-queens',queensImgs);
-  buildDanceGrid('grid-farmer',farmerImgs);
-})();
+
+  function bwd(){
+    if(busy||spreadIdx<=0)return;
+    busy=true;var prev=spreadIdx-1;
+    flipFront.src=R(prev);flipBack.src=L(spreadIdx);imgLeft.src=L(spreadIdx);
+    turnShadow.style.opacity='1';
+    foldShadow.style.transition='none';foldShadow.style.opacity='0.9';
+    instant(flipper,'rotateY(-180deg)');
+    imgLeft.src=L(prev);
+    var tid=setTimeout(function(){if(busy)foldShadow.style.opacity='0';},DUR*0.28);
+    animTo(flipper,'rotateY(0deg)',function(){
+      clearTimeout(tid);spreadIdx=prev;
+      imgRight.src=R(spreadIdx);flipFront.src=R(spreadIdx);
+      foldShadow.style.transition='none';foldShadow.style.opacity='0';
+      turnShadow.style.opacity='0';busy=false;ui();
+      preload(L(spreadIdx-1));preload(R(spreadIdx-1));
+    });
+  }
+
+  btnNext.addEventListener('click',fwd);
+  btnPrev.addEventListener('click',bwd);
+  book.addEventListener('click',function(e){
+    if(busy)return;
+    var mid=book.getBoundingClientRect().left+book.offsetWidth/2;
+    e.clientX>mid?fwd():bwd();
+  });
+  var tx0=0;
+  book.addEventListener('touchstart',function(e){tx0=e.touches[0].clientX;},{passive:true});
+  book.addEventListener('touchend',function(e){
+    var dx=e.changedTouches[0].clientX-tx0;
+    if(Math.abs(dx)>48){dx<0?fwd():bwd();}
+  });
+
+  preload(L(1));preload(R(1));preload(L(2));preload(R(2));
+  ui();
+}
+
+/* ────────────────────────────────────────────────────
+   Queens Dance flip-book  (26 photos, 13 spreads)
+──────────────────────────────────────────────────── */
+makeFlipBook('qd',[
+  'images/cambodia-queens/_DSC4527.jpg','images/cambodia-queens/_DSC4559.jpg',
+  'images/cambodia-queens/_DSC4569.jpg','images/cambodia-queens/_DSC4589.jpg',
+  'images/cambodia-queens/_DSC4627.jpg','images/cambodia-queens/_DSC4635.jpg',
+  'images/cambodia-queens/_DSC4638.jpg','images/cambodia-queens/_DSC4651.jpg',
+  'images/cambodia-queens/_DSC4658.jpg','images/cambodia-queens/_DSC4673.jpg',
+  'images/cambodia-queens/_DSC4682.jpg','images/cambodia-queens/_DSC4690.jpg',
+  'images/cambodia-queens/_DSC4692.jpg','images/cambodia-queens/_DSC4698.jpg',
+  'images/cambodia-queens/_DSC4704.jpg','images/cambodia-queens/_DSC4707.jpg',
+  'images/cambodia-queens/_DSC4712.jpg','images/cambodia-queens/_DSC4719.jpg',
+  'images/cambodia-queens/_DSC4733.jpg','images/cambodia-queens/_DSC4739.jpg',
+  'images/cambodia-queens/_DSC4767.jpg','images/cambodia-queens/_DSC4775%20copy.jpg',
+  'images/cambodia-queens/_DSC4777.jpg','images/cambodia-queens/_DSC4786.jpg',
+  'images/cambodia-queens/_DSC4802.jpg','images/cambodia-queens/_DSC4835.jpg'
+]);
+
+/* ────────────────────────────────────────────────────
+   Farmer Dance flip-book  (21 photos, 11 spreads)
+──────────────────────────────────────────────────── */
+makeFlipBook('fd',[
+  'images/cambodia-farmer/_DSC4385.jpg','images/cambodia-farmer/_DSC4386.jpg',
+  'images/cambodia-farmer/_DSC4388.jpg','images/cambodia-farmer/_DSC4397.jpg',
+  'images/cambodia-farmer/_DSC4404.jpg','images/cambodia-farmer/_DSC4413.jpg',
+  'images/cambodia-farmer/_DSC4415.jpg','images/cambodia-farmer/_DSC4416.jpg',
+  'images/cambodia-farmer/_DSC4420.jpg','images/cambodia-farmer/_DSC4424.jpg',
+  'images/cambodia-farmer/_DSC4427.jpg','images/cambodia-farmer/_DSC4430.jpg',
+  'images/cambodia-farmer/_DSC4433.jpg','images/cambodia-farmer/_DSC4439.jpg',
+  'images/cambodia-farmer/_DSC4446.jpg','images/cambodia-farmer/_DSC4449.jpg',
+  'images/cambodia-farmer/_DSC4450.jpg','images/cambodia-farmer/_DSC4452.jpg',
+  'images/cambodia-farmer/_DSC4453.jpg','images/cambodia-farmer/_DSC4454.jpg',
+  'images/cambodia-farmer/_DSC4457.jpg'
+]);
 </script>
 </body>
 </html>
