@@ -16,24 +16,31 @@
 
 /* ——— Package cards ——— */
 .packages-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:72px;}
-.pkg{border:0.5px solid rgba(201,169,110,0.15);padding:40px 36px;position:relative;background:#fafafa;}
-.pkg-badge{position:absolute;top:24px;right:24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;border:0.5px solid rgba(201,169,110,0.5);padding:4px 10px;}
-.pkg-name{font-family:'Playfair Display',serif;font-size:22px;color:#1a1a1a;margin:0 0 6px;}
-.pkg-price{font-size:40px;font-weight:300;color:#c9a96e;margin:16px 0 4px;letter-spacing:-1px;}
+.packages-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:72px;}
+.pkg{border:0.5px solid rgba(201,169,110,0.15);position:relative;background:#fafafa;display:flex;flex-direction:column;}
+.pkg-img{height:260px;background-size:cover;background-position:center;position:relative;flex-shrink:0;}
+.pkg-img--top{background-position:center 20%;}
+.svc-img--top{background-position:center top;}
+.pkg-badge{position:absolute;top:16px;right:16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#1a1a1a;background:#c9a96e;padding:5px 12px;z-index:1;}
+.pkg-body{padding:32px 32px 28px;display:flex;flex-direction:column;flex:1;}
+.pkg-name{font-family:'Playfair Display',serif;font-size:21px;color:#1a1a1a;margin:0 0 4px;}
+.pkg-price{font-size:40px;font-weight:300;color:#c9a96e;margin:14px 0 2px;letter-spacing:-1px;line-height:1;}
 .pkg-price sup{font-size:18px;vertical-align:super;}
-.pkg-duration{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:28px;}
-.pkg-divider{height:0.5px;background:rgba(201,169,110,0.2);margin-bottom:24px;}
-.pkg-list{list-style:none;padding:0;margin:0 0 32px;}
+.pkg-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:22px;}
+.pkg-divider{height:0.5px;background:rgba(201,169,110,0.25);margin-bottom:20px;}
+.pkg-list{list-style:none;padding:0;margin:0 0 28px;flex:1;}
 .pkg-list li{font-size:13px;line-height:1.9;color:#666;padding-left:18px;position:relative;}
 .pkg-list li::before{content:'—';position:absolute;left:0;color:#c9a96e;}
 
-/* ——— Services grid ——— */
+/* ——— À la carte cards ——— */
 .services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:72px;}
-.svc{border:0.5px solid rgba(201,169,110,0.12);padding:28px 24px;background:#fafafa;}
-.svc-name{font-family:'Playfair Display',serif;font-size:16px;color:#1a1a1a;margin:0 0 6px;}
-.svc-price{font-size:24px;font-weight:300;color:#c9a96e;margin:10px 0 4px;}
+.svc{border:0.5px solid rgba(201,169,110,0.12);background:#fafafa;display:flex;flex-direction:column;}
+.svc-img{height:200px;background-size:cover;background-position:center;}
+.svc-body{padding:22px 24px 24px;flex:1;display:flex;flex-direction:column;}
+.svc-name{font-family:'Playfair Display',serif;font-size:17px;color:#1a1a1a;margin:0 0 4px;}
+.svc-price{font-size:26px;font-weight:300;color:#c9a96e;margin:10px 0 2px;}
 .svc-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#aaa;}
-.svc-desc{font-size:12px;line-height:1.8;color:#888;margin-top:12px;}
+.svc-desc{font-size:12px;line-height:1.85;color:#888;margin-top:10px;flex:1;}
 
 /* ——— Booking CTA ——— */
 .booking-cta{text-align:center;padding:64px 40px;background:#0d0d0d;margin-top:16px;}
@@ -45,13 +52,17 @@
 @media(prefers-color-scheme:dark){
   .sessions-intro h2,.sessions-heading,.pkg-name,.svc-name{color:#e0e0e0;}
   .pkg,.svc{background:#111;border-color:rgba(201,169,110,0.1);}
+  .pkg-name{color:#e0e0e0;}
+}
+@media(max-width:900px){
+  .packages-grid-3{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:760px){
   .packages-grid{grid-template-columns:1fr;}
   .services-list{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:480px){
-  .services-list{grid-template-columns:1fr;}
+  .packages-grid-3,.services-list{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -74,7 +85,7 @@
     <p>Every session is crafted to bring your vision to life. Whether it's a portrait, fashion shoot, or a full production day — contact us and we'll tailor the perfect package for you.</p>
   </div>
 
-  <!-- PORTRAIT PACKAGES -->
+  <!-- ① PORTRAIT PACKAGES -->
   <div class="fade-up">
     <p class="sessions-label">01 — Portrait Sessions</p>
     <h2 class="sessions-heading">Fine Art Portraits</h2>
@@ -83,89 +94,106 @@
   <div class="packages-grid fade-up">
 
     <div class="pkg">
-      <span class="pkg-badge">Popular</span>
-      <p class="pkg-name">Basic Collection</p>
-      <div class="pkg-price"><sup>€</sup>400</div>
-      <p class="pkg-duration">1.5 – 2 hours · Studio</p>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-list">
-        <li>6 high-resolution fine art portrait digitals</li>
-        <li>1 – 2 creative concepts per session</li>
-        <li>Stylist support — dress, makeup &amp; hair</li>
-        <li>Full professional retouching</li>
-        <li>Delivery within 2 weeks</li>
-      </ul>
-      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Basic%20Collection%20Booking">Book This Package</a>
+      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg">
+        <span class="pkg-badge">Popular</span>
+      </div>
+      <div class="pkg-body">
+        <p class="pkg-name">Basic Collection</p>
+        <div class="pkg-price"><sup>€</sup>400</div>
+        <p class="pkg-duration">1.5 – 2 hours · Studio</p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>6 high-resolution fine art portrait digitals</li>
+          <li>1 – 2 creative concepts per session</li>
+          <li>Stylist support — dress, makeup &amp; hair</li>
+          <li>Full professional retouching</li>
+          <li>Delivery within 2 weeks</li>
+        </ul>
+        <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Basic%20Collection%20Booking">Book This Package</a>
+      </div>
     </div>
 
     <div class="pkg">
-      <span class="pkg-badge">Premium</span>
-      <p class="pkg-name">Classic Collection</p>
-      <div class="pkg-price"><sup>€</sup>750</div>
-      <p class="pkg-duration">2 – 3 hours · Studio</p>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-list">
-        <li>15 high-resolution fine art portrait digitals</li>
-        <li>2 – 3 creative concepts per session</li>
-        <li>Stylist support — dress, makeup &amp; hair</li>
-        <li>Full professional retouching</li>
-        <li>Delivery within 3 weeks</li>
-      </ul>
-      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Classic%20Collection%20Booking">Book This Package</a>
+      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg/v1/fill/w_900,h_520,q_90,enc_avif,quality_auto/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg">
+        <span class="pkg-badge">Premium</span>
+      </div>
+      <div class="pkg-body">
+        <p class="pkg-name">Classic Collection</p>
+        <div class="pkg-price"><sup>€</sup>750</div>
+        <p class="pkg-duration">2 – 3 hours · Studio</p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>15 high-resolution fine art portrait digitals</li>
+          <li>2 – 3 creative concepts per session</li>
+          <li>Stylist support — dress, makeup &amp; hair</li>
+          <li>Full professional retouching</li>
+          <li>Delivery within 3 weeks</li>
+        </ul>
+        <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Classic%20Collection%20Booking">Book This Package</a>
+      </div>
     </div>
 
   </div>
 
-  <!-- SPECIALIZED SERVICES -->
+  <!-- ② SPECIALIZED PRODUCTION -->
   <div class="fade-up">
     <p class="sessions-label">02 — Specialized Production</p>
     <h2 class="sessions-heading">Full-Day &amp; Training Sessions</h2>
   </div>
 
-  <div class="packages-grid fade-up">
+  <div class="packages-grid-3 fade-up">
 
     <div class="pkg">
-      <p class="pkg-name">Fashion Shooting</p>
-      <div class="pkg-price"><sup>€</sup>770</div>
-      <p class="pkg-duration">Full day · 8 hours</p>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-list">
-        <li>Collections, catalogs &amp; lookbooks</li>
-        <li>All usage rights to photos &amp; source files</li>
-        <li>Retouching &amp; models billed separately</li>
-      </ul>
-      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Fashion%20Shooting%20Enquiry">Get in Touch</a>
+      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg"></div>
+      <div class="pkg-body">
+        <p class="pkg-name">Fashion Shooting</p>
+        <div class="pkg-price"><sup>€</sup>770</div>
+        <p class="pkg-duration">Full day · 8 hours</p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Collections, catalogs &amp; lookbooks</li>
+          <li>All usage rights to photos &amp; source files</li>
+          <li>Retouching &amp; models billed separately</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Fashion%20Shooting%20Enquiry">Get in Touch</a>
+      </div>
     </div>
 
     <div class="pkg">
-      <p class="pkg-name">Masterclass — Photo &amp; Editing</p>
-      <div class="pkg-price"><sup>€</sup>690</div>
-      <p class="pkg-duration">3 days · 1 participant</p>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-list">
-        <li>Studio photography techniques</li>
-        <li>Professional retouching workflow</li>
-        <li>Remote Q&amp;A support after training</li>
-      </ul>
-      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Masterclass%20Booking">Get in Touch</a>
+      <div class="pkg-img pkg-img--top" data-bg="https://static.wixstatic.com/media/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg"></div>
+      <div class="pkg-body">
+        <p class="pkg-name">Masterclass — Photo &amp; Editing</p>
+        <div class="pkg-price"><sup>€</sup>690</div>
+        <p class="pkg-duration">3 days · 1 participant</p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>Studio photography techniques</li>
+          <li>Professional retouching workflow</li>
+          <li>Remote Q&amp;A support after training</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Masterclass%20Booking">Get in Touch</a>
+      </div>
     </div>
 
     <div class="pkg">
-      <p class="pkg-name">Masterclass — Art Editing</p>
-      <div class="pkg-price"><sup>€</sup>550</div>
-      <p class="pkg-duration">3 days · Remote or in-person</p>
-      <div class="pkg-divider"></div>
-      <ul class="pkg-list">
-        <li>RAW file preparation &amp; editing</li>
-        <li>Advanced color grading techniques</li>
-        <li>Skype / in-person sessions available</li>
-      </ul>
-      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Art%20Editing%20Masterclass">Get in Touch</a>
+      <div class="pkg-img" data-bg="https://static.wixstatic.com/media/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg/v1/fill/w_700,h_520,q_90,enc_avif,quality_auto/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg"></div>
+      <div class="pkg-body">
+        <p class="pkg-name">Masterclass — Art Editing</p>
+        <div class="pkg-price"><sup>€</sup>550</div>
+        <p class="pkg-duration">3 days · Remote or in-person</p>
+        <div class="pkg-divider"></div>
+        <ul class="pkg-list">
+          <li>RAW file preparation &amp; editing</li>
+          <li>Advanced color grading techniques</li>
+          <li>Skype / in-person sessions available</li>
+        </ul>
+        <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Art%20Editing%20Masterclass">Get in Touch</a>
+      </div>
     </div>
 
   </div>
 
-  <!-- INDIVIDUAL SERVICES -->
+  <!-- ③ À LA CARTE -->
   <div class="fade-up">
     <p class="sessions-label">03 — À La Carte</p>
     <h2 class="sessions-heading">Individual Services</h2>
@@ -174,24 +202,33 @@
   <div class="services-list fade-up">
 
     <div class="svc">
-      <p class="svc-name">Fashion Photography</p>
-      <p class="svc-price">€190</p>
-      <p class="svc-duration">2 hours</p>
-      <p class="svc-desc">Focused fashion session — perfect for lookbooks, profiles and styled shoots.</p>
+      <div class="svc-img svc-img--top" data-bg="https://static.wixstatic.com/media/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg"></div>
+      <div class="svc-body">
+        <p class="svc-name">Fashion Photography</p>
+        <p class="svc-price">€190</p>
+        <p class="svc-duration">2 hours</p>
+        <p class="svc-desc">Focused fashion session — perfect for lookbooks, profiles and styled shoots.</p>
+      </div>
     </div>
 
     <div class="svc">
-      <p class="svc-name">Aerial Photography</p>
-      <p class="svc-price">€200</p>
-      <p class="svc-duration">3 hours</p>
-      <p class="svc-desc">Drone photography for events, real estate, landscapes and commercial projects.</p>
+      <div class="svc-img" data-bg="https://static.wixstatic.com/media/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_74c897022bd94887ac068a2fc0faa334~mv2_d_4928_3264_s_4_2.jpg"></div>
+      <div class="svc-body">
+        <p class="svc-name">Aerial Photography</p>
+        <p class="svc-price">€200</p>
+        <p class="svc-duration">3 hours</p>
+        <p class="svc-desc">Drone photography for events, real estate, landscapes and commercial projects.</p>
+      </div>
     </div>
 
     <div class="svc">
-      <p class="svc-name">Video Editing</p>
-      <p class="svc-price">€249</p>
-      <p class="svc-duration">4 hours</p>
-      <p class="svc-desc">Professional video editing — colour grading, cuts, transitions and finishing.</p>
+      <div class="svc-img" data-bg="https://static.wixstatic.com/media/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_700,h_400,q_90,enc_avif,quality_auto/6cead5_cf0e6f1597e5491284b8280c936e2e49~mv2_d_6000_4000_s_4_2.jpg"></div>
+      <div class="svc-body">
+        <p class="svc-name">Video Editing</p>
+        <p class="svc-price">€249</p>
+        <p class="svc-duration">4 hours</p>
+        <p class="svc-desc">Professional video editing — colour grading, cuts, transitions and finishing.</p>
+      </div>
     </div>
 
   </div>
@@ -209,5 +246,10 @@
 </div>
 
 <script src="nav.js"></script>
+<script>
+document.querySelectorAll('[data-bg]').forEach(el => {
+  el.style.backgroundImage = 'url(' + el.dataset.bg + ')';
+});
+</script>
 </body>
 </html>
