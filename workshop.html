@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portrait Photography Workshop — Sign²Art</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── Hero ── */
+.hero-bg-workshop{background-image:url('images/workshop/ws03.jpg');}
+
+/* ── Stage ── */
+.ws-stage{
+  background:#111;
+  padding:80px 20px 100px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:36px;
+}
+
+/* ── Book outer ── */
+.book-outer{
+  position:relative;
+  width:min(900px,calc(100vw - 32px));
+  animation:bookReveal .9s cubic-bezier(.16,1,.3,1) forwards;
+  filter:drop-shadow(0 40px 80px rgba(0,0,0,.75));
+}
+@keyframes bookReveal{
+  from{opacity:0;transform:translateY(50px) scale(.92);}
+  to  {opacity:1;transform:translateY(0)  scale(1);}
+}
+
+/* ── Ribbon bookmark ── */
+.book-ribbon{
+  position:absolute;
+  top:-2px; right:40px;
+  width:18px; height:52px;
+  background:linear-gradient(to bottom,#c9a96e,#8a6030);
+  clip-path:polygon(0 0,100% 0,100% 78%,50% 100%,0 78%);
+  z-index:30;
+  box-shadow:2px 2px 8px rgba(0,0,0,.5);
+}
+
+/* ── Book cover/frame ── */
+.book-frame{
+  position:relative;
+  padding:12px 14px 12px 36px;
+  background:linear-gradient(150deg,#2e1200 0%,#5a2800 40%,#3a1800 70%,#2e1200 100%);
+  border-radius:6px 18px 18px 6px;
+  box-shadow:
+    -6px 0 14px rgba(0,0,0,.6),
+    inset  0 0 0 1px rgba(201,169,110,.18),
+    inset -1px 0 3px rgba(0,0,0,.4);
+}
+/* Leather crosshatch */
+.book-frame::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:
+    repeating-linear-gradient(45deg,transparent,transparent 3px,rgba(0,0,0,.04) 3px,rgba(0,0,0,.04) 6px),
+    repeating-linear-gradient(-45deg,transparent,transparent 3px,rgba(0,0,0,.04) 3px,rgba(0,0,0,.04) 6px);
+  border-radius:inherit;
+  pointer-events:none;
+}
+/* Gold edge line */
+.book-frame::after{
+  content:'';
+  position:absolute;
+  inset:6px 8px 6px 34px;
+  border:1px solid rgba(201,169,110,.12);
+  border-radius:1px 10px 10px 1px;
+  pointer-events:none;
+}
+
+/* ── Spine ── */
+.book-spine{
+  position:absolute;
+  left:0;top:0;bottom:0;
+  width:32px;
+  background:linear-gradient(90deg,#180800 0%,#3a1800 35%,#4e2400 50%,#3a1800 65%,#180800 100%);
+  border-radius:6px 0 0 6px;
+  border-right:1px solid rgba(201,169,110,.25);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+}
+.book-spine::before,.book-spine::after{
+  content:'';width:2px;height:36px;
+  background:rgba(201,169,110,.25);border-radius:1px;
+}
+
+/* ── Page viewport ── */
+.book-page-area{
+  position:relative;
+  aspect-ratio:870/612;
+  overflow:hidden;
+  border-radius:0 8px 8px 0;
+  background:#fff;
+  /* 3-D perspective for the flip */
+  perspective:2800px;
+  perspective-origin:left center;
+}
+
+/* Page-edge stack (right side visual depth) */
+.page-edges{
+  position:absolute;
+  right:-5px;top:6px;bottom:6px;
+  width:6px;
+  background:repeating-linear-gradient(to bottom,
+    #e8e2da 0px,#e8e2da 2px,
+    #d8d0c8 2px,#d8d0c8 4px);
+  border-radius:0 2px 2px 0;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── Pages ── */
+.page{
+  position:absolute;inset:0;overflow:hidden;
+}
+.page img{
+  width:100%;height:100%;
+  object-fit:contain;
+  background:#fff;
+  display:block;
+}
+
+/* Back page — always underneath */
+#pageBack{z-index:1;}
+
+/* Front page — the flipping element */
+#pageFront{
+  z-index:2;
+  transform-origin:left center;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  will-change:transform;
+  transform:rotateY(0deg);
+}
+
+/* Shadow cast on back page as front folds away */
+.fold-shadow{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,rgba(0,0,0,.55) 0%,rgba(0,0,0,.15) 35%,transparent 65%);
+  z-index:3;pointer-events:none;
+  opacity:0;transition:opacity .12s;
+}
+.fold-shadow.on{opacity:1;}
+
+/* Shine on the turning front page edge */
+.page-shine{
+  position:absolute;inset:0;
+  background:linear-gradient(to left,rgba(255,248,230,.18) 0%,transparent 40%);
+  z-index:4;pointer-events:none;
+  opacity:0;transition:opacity .12s;
+}
+.page-shine.on{opacity:1;}
+
+/* Corner tap hint */
+.corner-hint{
+  position:absolute;bottom:0;right:0;
+  width:48px;height:48px;
+  cursor:pointer;z-index:10;
+  background:linear-gradient(135deg,transparent 50%,rgba(201,169,110,.25) 50%);
+  transition:background .2s;
+}
+.corner-hint:hover{background:linear-gradient(135deg,transparent 50%,rgba(201,169,110,.55) 50%);}
+.corner-hint-prev{
+  left:0;right:auto;
+  background:linear-gradient(225deg,transparent 50%,rgba(201,169,110,.18) 50%);
+}
+.corner-hint-prev:hover{background:linear-gradient(225deg,transparent 50%,rgba(201,169,110,.45) 50%);}
+
+/* ── Controls ── */
+.book-controls{
+  display:flex;align-items:center;gap:28px;
+}
+.flip-btn{
+  width:54px;height:54px;
+  border-radius:50%;
+  border:1px solid rgba(201,169,110,.45);
+  background:none;
+  color:#c9a96e;
+  font-size:30px;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-family:Georgia,serif;
+  transition:background .2s,border-color .2s,transform .15s;
+}
+.flip-btn:hover:not(:disabled){
+  background:rgba(201,169,110,.12);
+  border-color:#c9a96e;
+  transform:scale(1.08);
+}
+.flip-btn:active:not(:disabled){transform:scale(.96);}
+.flip-btn:disabled{opacity:.2;cursor:default;}
+
+.page-indicator{
+  font-size:10px;letter-spacing:3px;text-transform:uppercase;
+  color:#777;min-width:72px;text-align:center;
+}
+
+/* ── Progress bar ── */
+.book-progress{
+  width:min(900px,calc(100vw - 32px));
+  height:2px;
+  background:rgba(255,255,255,.07);
+  border-radius:2px;
+}
+.book-progress-fill{
+  height:100%;
+  background:linear-gradient(to right,#c9a96e,#e8c880);
+  border-radius:2px;
+  transition:width .4s ease;
+}
+
+.ws-hint{
+  font-size:10px;letter-spacing:2px;text-transform:uppercase;
+  color:#444;margin-top:4px;
+}
+
+/* ── Responsive ── */
+@media(max-width:600px){
+  .ws-stage{padding:40px 10px 60px;gap:22px;}
+  .flip-btn{width:44px;height:44px;font-size:24px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── Hero ── -->
+<div class="service-page-hero">
+  <div class="service-page-hero-bg hero-bg-workshop"></div>
+  <div class="service-page-hero-overlay"></div>
+  <div class="service-page-hero-content">
+    <a class="back-link" href="index.html#services">← Back to Services</a>
+    <h1 class="service-page-title">Portrait Photography</h1>
+    <p class="service-page-sub">Workshop — Light · Emotion · Character</p>
+  </div>
+</div>
+
+<!-- ── Book Stage ── -->
+<div class="ws-stage">
+
+  <!-- Book -->
+  <div class="book-outer">
+    <div class="book-ribbon"></div>
+    <div class="book-frame">
+      <div class="book-spine"></div>
+      <div class="book-page-area" id="bookArea">
+
+        <!-- Page-stack edge -->
+        <div class="page-edges"></div>
+
+        <!-- Fold shadow overlay (back page) -->
+        <div class="fold-shadow" id="foldShadow"></div>
+
+        <!-- Back page (destination) -->
+        <div class="page" id="pageBack">
+          <img id="imgBack" src="images/workshop/ws02.jpg" alt="Workshop page">
+        </div>
+
+        <!-- Front page (flips away) -->
+        <div class="page" id="pageFront">
+          <img id="imgFront" src="images/workshop/ws01.jpg" alt="Workshop page">
+          <div class="page-shine" id="pageShine"></div>
+        </div>
+
+        <!-- Corner tap areas -->
+        <div class="corner-hint corner-hint-prev" id="cornerPrev" title="Previous page"></div>
+        <div class="corner-hint" id="cornerNext" title="Next page"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="book-progress">
+    <div class="book-progress-fill" id="progressFill" style="width:3.125%"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="book-controls">
+    <button class="flip-btn" id="btnPrev" disabled title="Previous page">&#8249;</button>
+    <span class="page-indicator" id="pageNum">1 / 32</span>
+    <button class="flip-btn" id="btnNext" title="Next page">&#8250;</button>
+  </div>
+
+  <p class="ws-hint">Arrow keys or tap corners to flip pages</p>
+
+</div>
+
+<script src="nav.js"></script>
+<script>
+const PAGES = (function(){
+  const a = [];
+  for(let i = 1; i <= 32; i++) a.push('images/workshop/ws' + String(i).padStart(2,'0') + '.jpg');
+  return a;
+})();
+
+let idx   = 0;
+let busy  = false;
+const FLIP_DUR = 820; // ms — matches CSS cubic-bezier feel
+const EASE = 'cubic-bezier(0.645,0.045,0.355,1.000)';
+
+const pageFront   = document.getElementById('pageFront');
+const pageBack    = document.getElementById('pageBack');
+const imgFront    = document.getElementById('imgFront');
+const imgBack     = document.getElementById('imgBack');
+const foldShadow  = document.getElementById('foldShadow');
+const pageShine   = document.getElementById('pageShine');
+const btnPrev     = document.getElementById('btnPrev');
+const btnNext     = document.getElementById('btnNext');
+const pageNum     = document.getElementById('pageNum');
+const progressFill= document.getElementById('progressFill');
+const cornerPrev  = document.getElementById('cornerPrev');
+const cornerNext  = document.getElementById('cornerNext');
+
+/* ── Helpers ── */
+function preload(src){ const i=new Image(); i.src=src; }
+
+function ui(){
+  pageNum.textContent = (idx+1) + ' / ' + PAGES.length;
+  btnPrev.disabled = idx===0;
+  btnNext.disabled = idx===PAGES.length-1;
+  cornerPrev.style.visibility = idx===0 ? 'hidden' : '';
+  cornerNext.style.visibility = idx===PAGES.length-1 ? 'hidden' : '';
+  progressFill.style.width = ((idx+1)/PAGES.length*100).toFixed(2) + '%';
+}
+
+/* ── Set transform instantly (no animation) ── */
+function setInstant(el, val){
+  el.style.transition = 'none';
+  el.style.transform  = val;
+  void el.offsetHeight; // reflow
+}
+
+/* ── Animate ── */
+function animate(el, to, cb){
+  el.style.transition = 'transform ' + FLIP_DUR + 'ms ' + EASE;
+  el.style.transform  = to;
+  el.addEventListener('transitionend', function h(){
+    el.removeEventListener('transitionend', h);
+    cb();
+  });
+}
+
+/* ── Flip forward ── */
+function flipForward(){
+  if(busy || idx >= PAGES.length-1) return;
+  busy = true;
+
+  const next = idx+1;
+  imgBack.src = PAGES[next];
+  if(next+1 < PAGES.length) preload(PAGES[next+1]);
+
+  foldShadow.classList.add('on');
+  pageShine.classList.add('on');
+
+  // Front page rotates away to the left
+  setInstant(pageFront, 'rotateY(0deg)');
+  animate(pageFront, 'rotateY(-180deg)', function(){
+    idx = next;
+    imgFront.src = PAGES[idx];
+    setInstant(pageFront, 'rotateY(0deg)');
+    foldShadow.classList.remove('on');
+    pageShine.classList.remove('on');
+    busy = false;
+    ui();
+  });
+}
+
+/* ── Flip backward ── */
+function flipBackward(){
+  if(busy || idx <= 0) return;
+  busy = true;
+
+  const prev = idx-1;
+  imgBack.src  = PAGES[idx];   // current page stays visible underneath
+  imgFront.src = PAGES[prev];  // previous page unflips from left
+  if(prev-1 >= 0) preload(PAGES[prev-1]);
+
+  foldShadow.classList.add('on');
+  pageShine.classList.add('on');
+
+  // Start pageFront flipped (invisible, on the left)
+  setInstant(pageFront, 'rotateY(-180deg)');
+  // Unflip back to 0 — it "returns" from the left revealing itself
+  animate(pageFront, 'rotateY(0deg)', function(){
+    idx = prev;
+    foldShadow.classList.remove('on');
+    pageShine.classList.remove('on');
+    busy = false;
+    ui();
+  });
+}
+
+/* ── Events ── */
+btnNext.addEventListener('click', flipForward);
+btnPrev.addEventListener('click', flipBackward);
+cornerNext.addEventListener('click', flipForward);
+cornerPrev.addEventListener('click', flipBackward);
+
+document.addEventListener('keydown', function(e){
+  if(e.key==='ArrowRight'||e.key===' '){ e.preventDefault(); flipForward(); }
+  if(e.key==='ArrowLeft')              { e.preventDefault(); flipBackward(); }
+});
+
+/* ── Swipe (touch) ── */
+let tx0 = 0;
+const bookArea = document.getElementById('bookArea');
+bookArea.addEventListener('touchstart', function(e){ tx0 = e.touches[0].clientX; },{passive:true});
+bookArea.addEventListener('touchend',   function(e){
+  const dx = e.changedTouches[0].clientX - tx0;
+  if(Math.abs(dx) > 48){ dx < 0 ? flipForward() : flipBackward(); }
+});
+
+/* ── Init ── */
+preload(PAGES[1]);
+preload(PAGES[2]);
+ui();
+</script>
+</body>
+</html>
