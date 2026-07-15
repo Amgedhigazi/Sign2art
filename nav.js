@@ -78,4 +78,19 @@
   // Scroll fade
   const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
   document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+  // ── Image protection ─────────────────────────────
+  // Block right-click "Save image as" on all images
+  document.addEventListener('contextmenu',function(e){
+    if(e.target.tagName==='IMG'){e.preventDefault();return false;}
+  });
+  // Block drag-to-desktop
+  document.addEventListener('dragstart',function(e){
+    if(e.target.tagName==='IMG')e.preventDefault();
+  });
+  // Copyright notice inside the lightbox (visible in screenshots)
+  const lbCopy=document.createElement('div');
+  lbCopy.id='lb-copyright';
+  lbCopy.textContent='© Amged Higazi — Sign²Art · All rights reserved';
+  document.getElementById('lightbox').appendChild(lbCopy);
 })();

@@ -48,6 +48,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .thumb:hover .thumb-overlay{opacity:1;}
 .zoom-icon{width:48px;height:48px;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;color:#c9a96e;font-size:20px;}
 
+/* ── Image protection ──────────────────────────────── */
+img{-webkit-user-drag:none;-moz-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;pointer-events:none;}
+#lb-img{pointer-events:auto;}
+.thumb::after{content:'\00A9 Sign\00B2Art';position:absolute;bottom:8px;right:10px;font-size:8px;letter-spacing:2px;color:rgba(255,255,255,0.5);text-transform:uppercase;pointer-events:none;z-index:30;font-family:'Inter',sans-serif;text-shadow:0 1px 4px rgba(0,0,0,0.9);opacity:0;transition:opacity 0.3s;}
+.thumb:hover::after{opacity:1;}
+#lb-copyright{position:fixed;bottom:52px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:3px;color:rgba(255,255,255,0.35);text-transform:uppercase;pointer-events:none;white-space:nowrap;font-family:'Inter',sans-serif;}
+@media print{body *{visibility:hidden!important;}body::after{visibility:visible!important;display:block!important;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);content:'\00A9 Sign\00B2Art \2014 All rights reserved. Unauthorized reproduction is prohibited.';color:#000;font-size:14px;text-align:center;letter-spacing:2px;}}
+
 /* FOOTER */
 footer{background:#060606;padding:60px 60px 28px;border-top:0.5px solid rgba(201,169,110,0.12);}
 .footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:48px;}
