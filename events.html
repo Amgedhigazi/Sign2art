@@ -370,6 +370,66 @@
 
 </section>
 
+<!-- ══════════════════════════════════════════════════
+     CAMBODIAN QUEENS DANCE & FARMER DANCE
+══════════════════════════════════════════════════ -->
+<section class="aw-section">
+
+  <!-- Header -->
+  <div class="aw-header fade-up">
+    <span class="section-num">Cultural</span>
+    <div class="section-line"></div>
+    <span class="eyebrow aw-eyebrow-inline">Siem Reap, Cambodia · 2012</span>
+  </div>
+
+  <!-- Intro -->
+  <div class="aw-intro fade-up">
+    <div>
+      <p class="aw-intro-meta">Reportage — Cultural Photography</p>
+      <h2 class="aw-intro-title">The Cambodian<br><em>Queens Dance</em></h2>
+      <p class="aw-intro-desc">
+        At the heart of Khmer heritage lies the Apsara — the celestial dancer
+        of ancient mythology. Royal court performers in elaborate golden crowns,
+        layered silk costumes and otherworldly masks enact stories of gods,
+        warriors and queens on an open-air stage in Siem Reap.
+      </p>
+    </div>
+    <div class="aw-intro-count" aria-hidden="true">26</div>
+  </div>
+
+  <!-- Queens Dance grid -->
+  <div class="aw-book-wrap fade-up">
+    <div class="masonry" id="grid-queens"></div>
+  </div>
+
+  <!-- Farmer Dance divider -->
+  <div class="aw-header fade-up" style="margin-top:24px;">
+    <div class="section-line"></div>
+    <span class="eyebrow aw-eyebrow-inline" style="white-space:nowrap;">Sub-section</span>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- Farmer Dance intro -->
+  <div class="aw-intro fade-up">
+    <div>
+      <p class="aw-intro-meta">Folk Performance</p>
+      <h2 class="aw-intro-title" style="font-size:clamp(18px,2.8vw,30px);">Cambodian<br><em>Farmer Dance</em></h2>
+      <p class="aw-intro-desc">
+        A folk performance depicting the life of Khmer farmers — women in blue sampot
+        costumes carrying wicker harvest baskets, men in red-headband attire enacting
+        scenes of courtship and harvest against an elaborate Angkor-inspired stage set.
+      </p>
+    </div>
+    <div class="aw-intro-count" aria-hidden="true">21</div>
+  </div>
+
+  <!-- Farmer Dance grid -->
+  <div class="aw-book-wrap fade-up">
+    <div class="masonry" id="grid-farmer"></div>
+  </div>
+
+</section>
+
 <script src="nav.js"></script>
 <script>
 /* ════════════════════════════════════════════════════
@@ -572,6 +632,74 @@ makeGrid('grid-courage',courage);
 makeGrid('grid-kunst',kunst);
 makeGrid('grid-redbull',redbull);
 makeGrid('grid-schools',schools);
+
+/* ════════════════════════════════════════════════════
+   CAMBODIAN DANCE GRIDS
+════════════════════════════════════════════════════ */
+(function(){
+  var queensImgs=[
+    'images/cambodia-queens/_DSC4527.jpg',
+    'images/cambodia-queens/_DSC4559.jpg',
+    'images/cambodia-queens/_DSC4569.jpg',
+    'images/cambodia-queens/_DSC4589.jpg',
+    'images/cambodia-queens/_DSC4627.jpg',
+    'images/cambodia-queens/_DSC4635.jpg',
+    'images/cambodia-queens/_DSC4638.jpg',
+    'images/cambodia-queens/_DSC4651.jpg',
+    'images/cambodia-queens/_DSC4658.jpg',
+    'images/cambodia-queens/_DSC4673.jpg',
+    'images/cambodia-queens/_DSC4682.jpg',
+    'images/cambodia-queens/_DSC4690.jpg',
+    'images/cambodia-queens/_DSC4692.jpg',
+    'images/cambodia-queens/_DSC4698.jpg',
+    'images/cambodia-queens/_DSC4704.jpg',
+    'images/cambodia-queens/_DSC4707.jpg',
+    'images/cambodia-queens/_DSC4712.jpg',
+    'images/cambodia-queens/_DSC4719.jpg',
+    'images/cambodia-queens/_DSC4733.jpg',
+    'images/cambodia-queens/_DSC4739.jpg',
+    'images/cambodia-queens/_DSC4767.jpg',
+    'images/cambodia-queens/_DSC4775%20copy.jpg',
+    'images/cambodia-queens/_DSC4777.jpg',
+    'images/cambodia-queens/_DSC4786.jpg',
+    'images/cambodia-queens/_DSC4802.jpg',
+    'images/cambodia-queens/_DSC4835.jpg'
+  ];
+  var farmerImgs=[
+    'images/cambodia-farmer/_DSC4385.jpg',
+    'images/cambodia-farmer/_DSC4386.jpg',
+    'images/cambodia-farmer/_DSC4388.jpg',
+    'images/cambodia-farmer/_DSC4397.jpg',
+    'images/cambodia-farmer/_DSC4404.jpg',
+    'images/cambodia-farmer/_DSC4413.jpg',
+    'images/cambodia-farmer/_DSC4415.jpg',
+    'images/cambodia-farmer/_DSC4416.jpg',
+    'images/cambodia-farmer/_DSC4420.jpg',
+    'images/cambodia-farmer/_DSC4424.jpg',
+    'images/cambodia-farmer/_DSC4427.jpg',
+    'images/cambodia-farmer/_DSC4430.jpg',
+    'images/cambodia-farmer/_DSC4433.jpg',
+    'images/cambodia-farmer/_DSC4439.jpg',
+    'images/cambodia-farmer/_DSC4446.jpg',
+    'images/cambodia-farmer/_DSC4449.jpg',
+    'images/cambodia-farmer/_DSC4450.jpg',
+    'images/cambodia-farmer/_DSC4452.jpg',
+    'images/cambodia-farmer/_DSC4453.jpg',
+    'images/cambodia-farmer/_DSC4454.jpg',
+    'images/cambodia-farmer/_DSC4457.jpg'
+  ];
+  function buildDanceGrid(id,srcs){
+    var g=document.getElementById(id);
+    srcs.forEach(function(src,idx){
+      var d=document.createElement('div'); d.className='thumb';
+      d.innerHTML='<img src="'+src+'" loading="lazy" alt="Cambodia dance"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
+      d.onclick=function(){openLB(srcs,idx);};
+      g.appendChild(d);
+    });
+  }
+  buildDanceGrid('grid-queens',queensImgs);
+  buildDanceGrid('grid-farmer',farmerImgs);
+})();
 </script>
 </body>
 </html>
