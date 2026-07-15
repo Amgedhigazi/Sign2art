@@ -7,9 +7,9 @@
     <nav>
       <a class="logo" href="index.html">SIGN²ART</a>
       <ul class="nav-links">
-        <li><a href="index.html#services" ${isHome?'':''}> Services</a></li>
+        <li><a href="index.html#services"> Services</a></li>
+        <li><a href="sessions.html">Sessions</a></li>
         <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#gallery">Gallery</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
     </nav>

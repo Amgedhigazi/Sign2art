@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sessions & Pricing — Sign²Art</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ——— Page intro ——— */
+.sessions-intro{max-width:640px;margin:0 auto 72px;text-align:center;}
+.sessions-intro h2{font-family:'Playfair Display',serif;font-size:32px;color:#1a1a1a;margin:0 0 12px;}
+.sessions-intro p{font-size:14px;line-height:2;color:#888;}
+
+/* ——— Section label ——— */
+.sessions-label{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin-bottom:8px;}
+.sessions-heading{font-family:'Playfair Display',serif;font-size:22px;color:#1a1a1a;margin:0 0 32px;}
+
+/* ——— Package cards ——— */
+.packages-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:72px;}
+.pkg{border:0.5px solid rgba(201,169,110,0.15);padding:40px 36px;position:relative;background:#fafafa;}
+.pkg-badge{position:absolute;top:24px;right:24px;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#c9a96e;border:0.5px solid rgba(201,169,110,0.5);padding:4px 10px;}
+.pkg-name{font-family:'Playfair Display',serif;font-size:22px;color:#1a1a1a;margin:0 0 6px;}
+.pkg-price{font-size:40px;font-weight:300;color:#c9a96e;margin:16px 0 4px;letter-spacing:-1px;}
+.pkg-price sup{font-size:18px;vertical-align:super;}
+.pkg-duration{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#999;margin-bottom:28px;}
+.pkg-divider{height:0.5px;background:rgba(201,169,110,0.2);margin-bottom:24px;}
+.pkg-list{list-style:none;padding:0;margin:0 0 32px;}
+.pkg-list li{font-size:13px;line-height:1.9;color:#666;padding-left:18px;position:relative;}
+.pkg-list li::before{content:'—';position:absolute;left:0;color:#c9a96e;}
+
+/* ——— Services grid ——— */
+.services-list{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin-bottom:72px;}
+.svc{border:0.5px solid rgba(201,169,110,0.12);padding:28px 24px;background:#fafafa;}
+.svc-name{font-family:'Playfair Display',serif;font-size:16px;color:#1a1a1a;margin:0 0 6px;}
+.svc-price{font-size:24px;font-weight:300;color:#c9a96e;margin:10px 0 4px;}
+.svc-duration{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#aaa;}
+.svc-desc{font-size:12px;line-height:1.8;color:#888;margin-top:12px;}
+
+/* ——— Booking CTA ——— */
+.booking-cta{text-align:center;padding:64px 40px;background:#0d0d0d;margin-top:16px;}
+.booking-cta h2{font-family:'Playfair Display',serif;font-size:30px;color:#f0e8d8;margin:0 0 14px;}
+.booking-cta p{font-size:14px;line-height:2;color:#666;max-width:480px;margin:0 auto 32px;}
+.booking-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* ——— Dark mode ——— */
+@media(prefers-color-scheme:dark){
+  .sessions-intro h2,.sessions-heading,.pkg-name,.svc-name{color:#e0e0e0;}
+  .pkg,.svc{background:#111;border-color:rgba(201,169,110,0.1);}
+}
+@media(max-width:760px){
+  .packages-grid{grid-template-columns:1fr;}
+  .services-list{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .services-list{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="service-page-hero">
+  <div class="service-page-hero-bg" style="background-image:url('https://static.wixstatic.com/media/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg/v1/fill/w_1600,h_800,q_85,enc_avif,quality_auto/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg')"></div>
+  <div class="service-page-hero-overlay"></div>
+  <div class="service-page-hero-content">
+    <a class="back-link" href="index.html">← Back to Home</a>
+    <h1 class="service-page-title">Sessions &amp; Pricing</h1>
+    <p class="service-page-sub">Affordable prices · Great results · Tailored to your vision</p>
+  </div>
+</div>
+
+<div class="service-page-body">
+
+  <div class="sessions-intro fade-up">
+    <h2>Let's Create Something Beautiful</h2>
+    <p>Every session is crafted to bring your vision to life. Whether it's a portrait, fashion shoot, or a full production day — contact us and we'll tailor the perfect package for you.</p>
+  </div>
+
+  <!-- PORTRAIT PACKAGES -->
+  <div class="fade-up">
+    <p class="sessions-label">01 — Portrait Sessions</p>
+    <h2 class="sessions-heading">Fine Art Portraits</h2>
+  </div>
+
+  <div class="packages-grid fade-up">
+
+    <div class="pkg">
+      <span class="pkg-badge">Popular</span>
+      <p class="pkg-name">Basic Collection</p>
+      <div class="pkg-price"><sup>€</sup>400</div>
+      <p class="pkg-duration">1.5 – 2 hours · Studio</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-list">
+        <li>6 high-resolution fine art portrait digitals</li>
+        <li>1 – 2 creative concepts per session</li>
+        <li>Stylist support — dress, makeup &amp; hair</li>
+        <li>Full professional retouching</li>
+        <li>Delivery within 2 weeks</li>
+      </ul>
+      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Basic%20Collection%20Booking">Book This Package</a>
+    </div>
+
+    <div class="pkg">
+      <span class="pkg-badge">Premium</span>
+      <p class="pkg-name">Classic Collection</p>
+      <div class="pkg-price"><sup>€</sup>750</div>
+      <p class="pkg-duration">2 – 3 hours · Studio</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-list">
+        <li>15 high-resolution fine art portrait digitals</li>
+        <li>2 – 3 creative concepts per session</li>
+        <li>Stylist support — dress, makeup &amp; hair</li>
+        <li>Full professional retouching</li>
+        <li>Delivery within 3 weeks</li>
+      </ul>
+      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Classic%20Collection%20Booking">Book This Package</a>
+    </div>
+
+  </div>
+
+  <!-- SPECIALIZED SERVICES -->
+  <div class="fade-up">
+    <p class="sessions-label">02 — Specialized Production</p>
+    <h2 class="sessions-heading">Full-Day &amp; Training Sessions</h2>
+  </div>
+
+  <div class="packages-grid fade-up">
+
+    <div class="pkg">
+      <p class="pkg-name">Fashion Shooting</p>
+      <div class="pkg-price"><sup>€</sup>770</div>
+      <p class="pkg-duration">Full day · 8 hours</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-list">
+        <li>Collections, catalogs &amp; lookbooks</li>
+        <li>All usage rights to photos &amp; source files</li>
+        <li>Retouching &amp; models billed separately</li>
+      </ul>
+      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Fashion%20Shooting%20Enquiry">Get in Touch</a>
+    </div>
+
+    <div class="pkg">
+      <p class="pkg-name">Masterclass — Photo &amp; Editing</p>
+      <div class="pkg-price"><sup>€</sup>690</div>
+      <p class="pkg-duration">3 days · 1 participant</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-list">
+        <li>Studio photography techniques</li>
+        <li>Professional retouching workflow</li>
+        <li>Remote Q&amp;A support after training</li>
+      </ul>
+      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Masterclass%20Booking">Get in Touch</a>
+    </div>
+
+    <div class="pkg">
+      <p class="pkg-name">Masterclass — Art Editing</p>
+      <div class="pkg-price"><sup>€</sup>550</div>
+      <p class="pkg-duration">3 days · Remote or in-person</p>
+      <div class="pkg-divider"></div>
+      <ul class="pkg-list">
+        <li>RAW file preparation &amp; editing</li>
+        <li>Advanced color grading techniques</li>
+        <li>Skype / in-person sessions available</li>
+      </ul>
+      <a class="btn btn-outline" href="mailto:sign2art@gmail.com?subject=Art%20Editing%20Masterclass">Get in Touch</a>
+    </div>
+
+  </div>
+
+  <!-- INDIVIDUAL SERVICES -->
+  <div class="fade-up">
+    <p class="sessions-label">03 — À La Carte</p>
+    <h2 class="sessions-heading">Individual Services</h2>
+  </div>
+
+  <div class="services-list fade-up">
+
+    <div class="svc">
+      <p class="svc-name">Fashion Photography</p>
+      <p class="svc-price">€190</p>
+      <p class="svc-duration">2 hours</p>
+      <p class="svc-desc">Focused fashion session — perfect for lookbooks, profiles and styled shoots.</p>
+    </div>
+
+    <div class="svc">
+      <p class="svc-name">Aerial Photography</p>
+      <p class="svc-price">€200</p>
+      <p class="svc-duration">3 hours</p>
+      <p class="svc-desc">Drone photography for events, real estate, landscapes and commercial projects.</p>
+    </div>
+
+    <div class="svc">
+      <p class="svc-name">Video Editing</p>
+      <p class="svc-price">€249</p>
+      <p class="svc-duration">4 hours</p>
+      <p class="svc-desc">Professional video editing — colour grading, cuts, transitions and finishing.</p>
+    </div>
+
+  </div>
+
+  <!-- BOOKING CTA -->
+  <div class="booking-cta fade-up">
+    <h2>Ready to Book?</h2>
+    <p>Send a message with your session idea, preferred dates and any references — we'll get back to you within 24 hours to plan everything together.</p>
+    <div class="booking-cta-btns">
+      <a class="btn btn-gold" href="mailto:sign2art@gmail.com?subject=Session%20Booking%20Enquiry">Email to Book</a>
+      <a class="btn btn-outline" href="index.html#contact">Contact Page</a>
+    </div>
+  </div>
+
+</div>
+
+<script src="nav.js"></script>
+</body>
+</html>
