@@ -378,9 +378,9 @@
 <script src="nav.js"></script>
 <script>
 // ——— Update these with your real PayPal.me username and bank details ———
-const PAYPAL_ME = 'AmgedHigazi';   // → https://paypal.me/AmgedHigazi
-const BANK_IBAN = 'DE00 0000 0000 0000 0000 00'; // replace with real IBAN
-const BANK_BIC  = 'XXXXXXXXXX';                   // replace with real BIC
+const PAYPAL_EMAIL = 'sign2art@gmail.com';
+const BANK_IBAN = 'DE00 0000 0000 0000 0000 00'; // update when ready
+const BANK_BIC  = 'XXXXXXXXXX';                   // update when ready
 
 function openBooking(name, total, deposit, imgClass) {
   document.getElementById('modalTitle').textContent   = name;
@@ -398,7 +398,11 @@ function openBooking(name, total, deposit, imgClass) {
 
   // PayPal.me link: pre-fills amount and currency
   document.getElementById('paypalBtn').href =
-    'https://www.paypal.com/paypalme/' + PAYPAL_ME + '/' + deposit + 'EUR';
+    'https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=' +
+    encodeURIComponent(PAYPAL_EMAIL) +
+    '&amount=' + deposit +
+    '&currency_code=EUR' +
+    '&item_name=' + encodeURIComponent('Sign2Art — ' + name);
 
   document.getElementById('bookingModal').classList.add('open');
   document.body.style.overflow = 'hidden';
