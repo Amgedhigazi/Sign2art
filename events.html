@@ -241,6 +241,53 @@
   </div>
 </div>
 
+<!-- ── Event sections ── -->
+<div class="service-page-body">
+
+  <div class="service-video fade-up">
+    <video controls muted loop class="event-video-el">
+      <source src="videos/events.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Social Events — Germany</h2>
+    <p>AfricanTide fashion show in Germany — proud moments celebrating African culture and design.</p>
+    <div class="event-grid" id="grid-social"></div>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>African Union Day 2019</h2>
+    <p>Participants from different walks of life and from almost all European and African countries gathered for two days in Dortmund to mark the 56th anniversary of African Unity, celebrated by AfricanTide Union for the 9th time.</p>
+    <div class="event-grid" id="grid-union"></div>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Courage Day — November 2019</h2>
+    <p>More than 200 pupils from 23 Dortmund courage schools visited the German Football Museum on Courage Day, exchanging activities against discrimination and for democracy in everyday school life.</p>
+    <div class="event-grid" id="grid-courage"></div>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Kurfürstenkunst — Recklinghausen</h2>
+    <p>Annual art festival featuring pictures, music, literature and spontaneous creativity. Documented across multiple years: 2016, 2018, and 2019.</p>
+    <div class="event-grid" id="grid-kunst"></div>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Red Bull Sport Events — Oman</h2>
+    <p>Red Bull Cliff Diving World Championships at Wadi Shab, Oman — September 2012. Also covering Young Cars races and traditional boat races at The Wave, Muscat.</p>
+    <div class="event-grid" id="grid-redbull"></div>
+  </div>
+
+  <div class="service-event fade-up">
+    <h2>Children &amp; Schools Events — Oman</h2>
+    <p>Arab Orphan Day celebrations in Muscat, MIS School closing day and Mother's Day events.</p>
+    <div class="event-grid" id="grid-schools"></div>
+  </div>
+
+</div>
+
 <!-- ══════════════════════════════════════════════════
      ANGKOR WAT FLIP-BOOK
 ══════════════════════════════════════════════════ -->
@@ -261,11 +308,11 @@
       <p class="aw-intro-desc">
         A photographic journey through the ancient Khmer kingdom of Cambodia.
         Stone temples swallowed by jungle, monks in saffron robes, stone faces
-        that have watched centuries pass — 96 frames from a trip that left no
-        angle unseen.
+        that have watched centuries pass — 52 carefully selected frames from a
+        trip that left no angle unseen.
       </p>
     </div>
-    <div class="aw-intro-count" aria-hidden="true">96</div>
+    <div class="aw-intro-count" aria-hidden="true">52</div>
   </div>
 
   <!-- Book -->
@@ -323,62 +370,41 @@
 
 </section>
 
-<!-- ── Other event sections ── -->
-<div class="service-page-body">
-
-  <div class="service-video fade-up">
-    <video controls muted loop class="event-video-el">
-      <source src="videos/events.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>Social Events — Germany</h2>
-    <p>AfricanTide fashion show in Germany — proud moments celebrating African culture and design.</p>
-    <div class="event-grid" id="grid-social"></div>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>African Union Day 2019</h2>
-    <p>Participants from different walks of life and from almost all European and African countries gathered for two days in Dortmund to mark the 56th anniversary of African Unity, celebrated by AfricanTide Union for the 9th time.</p>
-    <div class="event-grid" id="grid-union"></div>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>Courage Day — November 2019</h2>
-    <p>More than 200 pupils from 23 Dortmund courage schools visited the German Football Museum on Courage Day, exchanging activities against discrimination and for democracy in everyday school life.</p>
-    <div class="event-grid" id="grid-courage"></div>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>Kurfürstenkunst — Recklinghausen</h2>
-    <p>Annual art festival featuring pictures, music, literature and spontaneous creativity. Documented across multiple years: 2016, 2018, and 2019.</p>
-    <div class="event-grid" id="grid-kunst"></div>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>Red Bull Sport Events — Oman</h2>
-    <p>Red Bull Cliff Diving World Championships at Wadi Shab, Oman — September 2012. Also covering Young Cars races and traditional boat races at The Wave, Muscat.</p>
-    <div class="event-grid" id="grid-redbull"></div>
-  </div>
-
-  <div class="service-event fade-up">
-    <h2>Children &amp; Schools Events — Oman</h2>
-    <p>Arab Orphan Day celebrations in Muscat, MIS School closing day and Mother's Day events.</p>
-    <div class="event-grid" id="grid-schools"></div>
-  </div>
-
-</div>
-
 <script src="nav.js"></script>
 <script>
 /* ════════════════════════════════════════════════════
    ANGKOR WAT FLIP-BOOK
 ════════════════════════════════════════════════════ */
 (function(){
-  var PAGES = [];
-  for(var i=1;i<=96;i++) PAGES.push('images/cambodia/cam'+String(i).padStart(2,'0')+'.jpg');
-  var TOTAL_SPREADS = Math.ceil(PAGES.length/2); // 48
+  var PAGES = [
+    'images/cambodia/cam01.jpg','images/cambodia/cam02.jpg',
+    'images/cambodia/cam05.jpg','images/cambodia/cam09.jpg',
+    'images/cambodia/cam10.jpg','images/cambodia/cam12.jpg',
+    'images/cambodia/cam13.jpg','images/cambodia/cam15.jpg',
+    'images/cambodia/cam16.jpg','images/cambodia/cam17.jpg',
+    'images/cambodia/cam20.jpg','images/cambodia/cam21.jpg',
+    'images/cambodia/cam22.jpg','images/cambodia/cam23.jpg',
+    'images/cambodia/cam25.jpg','images/cambodia/cam27.jpg',
+    'images/cambodia/cam28.jpg','images/cambodia/cam29.jpg',
+    'images/cambodia/cam33.jpg','images/cambodia/cam34.jpg',
+    'images/cambodia/cam35.jpg','images/cambodia/cam36.jpg',
+    'images/cambodia/cam37.jpg','images/cambodia/cam40.jpg',
+    'images/cambodia/cam41.jpg','images/cambodia/cam43.jpg',
+    'images/cambodia/cam47.jpg','images/cambodia/cam49.jpg',
+    'images/cambodia/cam51.jpg','images/cambodia/cam52.jpg',
+    'images/cambodia/cam58.jpg','images/cambodia/cam59.jpg',
+    'images/cambodia/cam62.jpg','images/cambodia/cam63.jpg',
+    'images/cambodia/cam66.jpg','images/cambodia/cam68.jpg',
+    'images/cambodia/cam69.jpg','images/cambodia/cam70.jpg',
+    'images/cambodia/cam71.jpg','images/cambodia/cam72.jpg',
+    'images/cambodia/cam73.jpg','images/cambodia/cam74.jpg',
+    'images/cambodia/cam76.jpg','images/cambodia/cam83.jpg',
+    'images/cambodia/cam84.jpg','images/cambodia/cam85.jpg',
+    'images/cambodia/cam88.jpg','images/cambodia/cam89.jpg',
+    'images/cambodia/cam92.jpg','images/cambodia/cam94.jpg',
+    'images/cambodia/cam95.jpg','images/cambodia/cam96.jpg'
+  ];
+  var TOTAL_SPREADS = Math.ceil(PAGES.length/2); // 26
   var spreadIdx=0, busy=false;
   var DUR=880, EASE='cubic-bezier(0.645,0.045,0.355,1.000)';
 
