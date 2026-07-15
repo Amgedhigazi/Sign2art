@@ -4,48 +4,170 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Food & Products — Sign²Art</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.hero-bg-food{background-image:url('images/food/amg_5208.jpg');}
+.cat-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px;}
+.cat-btn{background:none;border:1px solid #333;color:#666;padding:9px 26px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:border-color .25s,color .25s;font-family:inherit;}
+.cat-btn:hover,.cat-btn.active{border-color:#c9a96e;color:#c9a96e;}
+.cat-section{margin-bottom:80px;}
+.cat-section.hidden{display:none;}
+.cat-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin:0 0 6px;}
+.cat-title{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 10px;color:#1a1a1a;}
+.cat-desc{font-size:13px;line-height:2;color:#888;max-width:640px;margin:0 0 22px;}
+.cat-grid{columns:3;column-gap:4px;}
+.cat-grid .thumb{break-inside:avoid;margin-bottom:4px;}
+.cat-grid .thumb img{width:100%;display:block;}
+@media(prefers-color-scheme:dark){.cat-title{color:#e0e0e0;}}
+@media(max-width:900px){.cat-grid{columns:2;}}
+@media(max-width:480px){.cat-grid{columns:1;}}
+</style>
 </head>
 <body>
 
 <div class="service-page-hero">
-  <div class="service-page-hero-bg" style="background-image:url('https://static.wixstatic.com/media/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg/v1/fill/w_1600,h_800,q_85,enc_avif,quality_auto/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg')"></div>
+  <div class="service-page-hero-bg hero-bg-food"></div>
   <div class="service-page-hero-overlay"></div>
   <div class="service-page-hero-content">
     <a class="back-link" href="index.html#services">← Back to Services</a>
     <h1 class="service-page-title">Food &amp; Products</h1>
-    <p class="service-page-sub">Commercial photography · Food styling · Product shoots</p>
+    <p class="service-page-sub">Starters · Mains · Desserts · Beverages</p>
   </div>
 </div>
 
 <div class="service-page-body">
+
   <div class="service-video fade-up">
     <video controls muted loop playsinline style="width:100%;max-height:560px;object-fit:cover;display:block;background:#000;">
       <source src="videos/food.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="service-event fade-up">
-    <h2>Food &amp; Product Gallery</h2>
-    <p>Capturing the beauty of food and products through light, composition and creative styling — making every subject irresistible to the eye.</p>
-    <div class="masonry" id="foodGrid"></div>
+
+  <nav class="cat-nav fade-up" aria-label="Filter by category">
+    <button type="button" class="cat-btn active" data-filter="all">All Work</button>
+    <button type="button" class="cat-btn" data-filter="starters">Starters</button>
+    <button type="button" class="cat-btn" data-filter="mains">Main Courses</button>
+    <button type="button" class="cat-btn" data-filter="desserts">Desserts</button>
+    <button type="button" class="cat-btn" data-filter="beverages">Beverages</button>
+  </nav>
+
+  <div class="cat-section fade-up" data-cat="starters" id="sec-starters">
+    <p class="cat-eyebrow">01 — Starters</p>
+    <h2 class="cat-title">Starters &amp; Sharing</h2>
+    <p class="cat-desc">Appetisers and sharing plates photographed to entice — from crispy bites to elegant platters that set the mood for the meal ahead.</p>
+    <div class="cat-grid" id="grid-starters"></div>
   </div>
+
+  <div class="cat-section fade-up" data-cat="mains" id="sec-mains">
+    <p class="cat-eyebrow">02 — Mains</p>
+    <h2 class="cat-title">Main Courses</h2>
+    <p class="cat-desc">From flame-kissed steaks to perfectly plated fish and handcrafted burgers — main courses captured at the peak of their visual appeal.</p>
+    <div class="cat-grid" id="grid-mains"></div>
+  </div>
+
+  <div class="cat-section fade-up" data-cat="desserts" id="sec-desserts">
+    <p class="cat-eyebrow">03 — Desserts</p>
+    <h2 class="cat-title">Desserts &amp; Sweet Treats</h2>
+    <p class="cat-desc">Indulgent cheesecakes, chocolate creations, delicate pastries and frozen desserts — sweet moments made irresistible through the lens.</p>
+    <div class="cat-grid" id="grid-desserts"></div>
+  </div>
+
+  <div class="cat-section fade-up" data-cat="beverages" id="sec-beverages">
+    <p class="cat-eyebrow">04 — Beverages</p>
+    <h2 class="cat-title">Beverages</h2>
+    <p class="cat-desc">Coffee art, colourful cocktails and refreshing drinks — every glass photographed to make you thirsty at first glance.</p>
+    <div class="cat-grid" id="grid-beverages"></div>
+  </div>
+
 </div>
 
 <script src="nav.js"></script>
 <script>
-const imgs = [
-  'https://static.wixstatic.com/media/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg/v1/fill/w_800,h_600,q_90,enc_avif,quality_auto/6cead5_a6fcd51b8aa04d69929868ec47a300b6f000.jpg',
-  'https://static.wixstatic.com/media/6cead5_5d4108199ac64f33ac304c0a7226bc15f000.jpg/v1/fill/w_800,h_600,q_90,enc_avif,quality_auto/6cead5_5d4108199ac64f33ac304c0a7226bc15f000.jpg',
-  'https://static.wixstatic.com/media/6cead5_d95fecdd1a9640389bd9df78870c4595~mv2.jpg/v1/fill/w_800,h_1080,q_90,enc_avif,quality_auto/6cead5_d95fecdd1a9640389bd9df78870c4595~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_65b2800e01674e9a8708e0564d2af379~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_65b2800e01674e9a8708e0564d2af379~mv2_d_4000_6000_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg',
-];
+const B = 'images/food/';
+const cats = {
+  starters: [
+    B+'dsc_1705.jpg',
+    B+'dsc05608.jpg',
+    B+'dsc05623.jpg',
+    B+'dsc05683.jpg',
+    B+'dsc05692.jpg',
+    B+'dsc05693.jpg',
+    B+'dsc05913.jpg',
+    B+'dsc05984.jpg',
+    B+'dsc06059.jpg',
+  ],
+  mains: [
+    B+'dsc05190.jpg',
+    B+'amg_5208.jpg',
+    B+'amg_5310.jpg',
+    B+'amg_5597.jpg',
+    B+'amg_5798.jpg',
+    B+'dsc_1735.jpg',
+    B+'dsc04804.jpg',
+    B+'dsc04828.jpg',
+    B+'dsc05307.jpg',
+    B+'dsc05387.jpg',
+    B+'dsc05450.jpg',
+    B+'dsc05829.jpg',
+    B+'dsc05885.jpg',
+    B+'dsc05904.jpg',
+    B+'dsc05921.jpg',
+    B+'dsc06320.jpg',
+  ],
+  desserts: [
+    B+'dsc04889.jpg',
+    B+'dsc04893.jpg',
+    B+'dsc04901.jpg',
+    B+'dsc04921.jpg',
+    B+'dsc04936.jpg',
+    B+'dsc04948.jpg',
+    B+'dsc04969.jpg',
+    B+'dsc05117.jpg',
+    B+'dsc05473.jpg',
+    B+'dsc06349.jpg',
+    B+'dsc06386.jpg',
+  ],
+  beverages: [
+    B+'amg_5078.jpg',
+    B+'dsc05016-2.jpg',
+    B+'dsc06202.jpg',
+    B+'dsc06252.jpg',
+    B+'dsc06294.jpg',
+  ],
+};
 
-const g = document.getElementById('foodGrid');
-imgs.forEach((src, idx) => {
-  const d = document.createElement('div'); d.className = 'thumb';
-  d.innerHTML = `<img src="${src}" loading="lazy" alt="Food photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>`;
-  d.onclick = () => openLB(imgs, idx);
-  g.appendChild(d);
+const allImgs = [...cats.starters, ...cats.mains, ...cats.desserts, ...cats.beverages];
+
+function buildGrid(id, imgs, offset) {
+  const g = document.getElementById(id);
+  imgs.forEach((src, i) => {
+    const d = document.createElement('div'); d.className = 'thumb';
+    d.innerHTML = '<img src="' + src + '" loading="lazy" alt=""><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
+    d.onclick = () => openLB(allImgs, offset + i);
+    g.appendChild(d);
+  });
+}
+
+const offsets = [
+  0,
+  cats.starters.length,
+  cats.starters.length + cats.mains.length,
+  cats.starters.length + cats.mains.length + cats.desserts.length,
+];
+buildGrid('grid-starters',  cats.starters,  offsets[0]);
+buildGrid('grid-mains',     cats.mains,     offsets[1]);
+buildGrid('grid-desserts',  cats.desserts,  offsets[2]);
+buildGrid('grid-beverages', cats.beverages, offsets[3]);
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-section').forEach(s => {
+      s.classList.toggle('hidden', f !== 'all' && s.dataset.cat !== f);
+    });
+    if (f !== 'all') document.getElementById('sec-' + f).scrollIntoView({behavior:'smooth', block:'start'});
+  });
 });
 </script>
 </body>
