@@ -4,17 +4,12 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Wedding Photography — Sign²Art</title>
 <link rel="stylesheet" href="style.css">
-<style>
-.coming-soon{text-align:center;padding:80px 40px;border:0.5px solid rgba(201,169,110,0.2);}
-.coming-soon-icon{font-size:40px;color:rgba(201,169,110,0.3);margin-bottom:24px;}
-.coming-soon h2{font-family:'Playfair Display',serif;font-size:28px;color:#c9a96e;margin:0 0 12px;}
-.coming-soon p{font-size:14px;line-height:2;color:#777;max-width:440px;margin:0 auto 28px;}
-</style>
+<style>.hero-bg-weddings{background-image:url('images/wedding/amg_8553.jpg');}</style>
 </head>
 <body>
 
 <div class="service-page-hero">
-  <div class="service-page-hero-bg" style="background-image:url('https://static.wixstatic.com/media/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg/v1/fill/w_1600,h_800,q_85,enc_avif,quality_auto/6cead5_6bf2d634e7764540b10eb2a215ff8366~mv2_d_4928_3264_s_4_2.jpg')"></div>
+  <div class="service-page-hero-bg hero-bg-weddings"></div>
   <div class="service-page-hero-overlay"></div>
   <div class="service-page-hero-content">
     <a class="back-link" href="index.html#services">← Back to Services</a>
@@ -24,14 +19,49 @@
 </div>
 
 <div class="service-page-body">
-  <div class="coming-soon fade-up">
-    <div class="coming-soon-icon">◇</div>
-    <h2>Portfolio Coming Soon</h2>
-    <p>A curated wedding portfolio is on its way. In the meantime, get in touch to discuss your wedding photography needs.</p>
-    <a class="btn btn-gold" href="sessions.html">View Packages &amp; Pricing</a>
+
+  <div class="service-event fade-up">
+    <h2>Wedding Gallery</h2>
+    <p>Every wedding tells a unique love story. Through careful observation and the perfect moment, we capture the emotions, details, and joy that make your day unforgettable.</p>
+    <div class="masonry" id="weddingGrid"></div>
   </div>
+
 </div>
 
 <script src="nav.js"></script>
+<script>
+const imgs = [
+  'images/wedding/amg_8180-2.jpg',
+  'images/wedding/amg_8201.jpg',
+  'images/wedding/amg_8288-2.jpg',
+  'images/wedding/amg_8339.jpg',
+  'images/wedding/amg_8369.jpg',
+  'images/wedding/amg_8402.jpg',
+  'images/wedding/amg_8439.jpg',
+  'images/wedding/amg_8446.jpg',
+  'images/wedding/amg_8447.jpg',
+  'images/wedding/amg_8459.jpg',
+  'images/wedding/amg_8486.jpg',
+  'images/wedding/amg_8534.jpg',
+  'images/wedding/amg_8549.jpg',
+  'images/wedding/amg_8553.jpg',
+  'images/wedding/amg_8575.jpg',
+  'images/wedding/amg_8583.jpg',
+  'images/wedding/dsc08350.jpg',
+  'images/wedding/dsc08365-2.jpg',
+  'images/wedding/dsc08440-2.jpg',
+  'images/wedding/_dsc3755.jpg',
+  'images/wedding/_dsc3770.jpg',
+  'images/wedding/_dsc3797.jpg',
+];
+
+const g = document.getElementById('weddingGrid');
+imgs.forEach((src, idx) => {
+  const d = document.createElement('div'); d.className = 'thumb';
+  d.innerHTML = '<img src="' + src + '" loading="lazy" alt="Wedding photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
+  d.onclick = () => openLB(imgs, idx);
+  g.appendChild(d);
+});
+</script>
 </body>
 </html>
