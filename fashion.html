@@ -4,6 +4,22 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Model & Fashion Photography — Sign²Art</title>
 <link rel="stylesheet" href="style.css">
+<style>
+.cat-nav{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:56px;}
+.cat-btn{background:none;border:1px solid #333;color:#666;padding:9px 26px;font-size:10px;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:border-color .25s,color .25s;font-family:inherit;}
+.cat-btn:hover,.cat-btn.active{border-color:#c9a96e;color:#c9a96e;}
+.cat-section{margin-bottom:80px;}
+.cat-section.hidden{display:none;}
+.cat-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#c9a96e;margin:0 0 6px;}
+.cat-title{font-family:'Playfair Display',serif;font-size:26px;margin:0 0 10px;color:#1a1a1a;}
+.cat-desc{font-size:13px;line-height:2;color:#888;max-width:640px;margin:0 0 22px;}
+.cat-grid{columns:3;column-gap:4px;}
+.cat-grid .thumb{break-inside:avoid;margin-bottom:4px;}
+.cat-grid .thumb img{width:100%;display:block;}
+@media(prefers-color-scheme:dark){.cat-title{color:#e0e0e0;}}
+@media(max-width:900px){.cat-grid{columns:2;}}
+@media(max-width:480px){.cat-grid{columns:1;}}
+</style>
 </head>
 <body>
 
@@ -13,67 +29,139 @@
   <div class="service-page-hero-content">
     <a class="back-link" href="index.html#services">← Back to Services</a>
     <h1 class="service-page-title">Model &amp; Fashion Photography</h1>
-    <p class="service-page-sub">Portrait · Fashion · Beauty · Editorial</p>
+    <p class="service-page-sub">Portrait · Models · Fashion · Conceptual</p>
   </div>
 </div>
 
 <div class="service-page-body">
+
   <div class="service-video fade-up">
     <video controls muted loop playsinline style="width:100%;max-height:560px;object-fit:cover;display:block;background:#000;">
       <source src="videos/fashion.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="service-event fade-up">
-    <h2>Fashion &amp; Portrait Gallery</h2>
-    <p>A curated collection of fashion and portrait photography — capturing beauty, style, and the human spirit through careful composition and light.</p>
-    <div class="masonry" id="fashionGrid"></div>
+
+  <nav class="cat-nav fade-up" aria-label="Filter by category">
+    <button class="cat-btn active" data-filter="all">All Work</button>
+    <button class="cat-btn" data-filter="portrait">Portrait</button>
+    <button class="cat-btn" data-filter="models">Models</button>
+    <button class="cat-btn" data-filter="fashion">Fashion</button>
+    <button class="cat-btn" data-filter="conceptual">Conceptual</button>
+  </nav>
+
+  <div class="cat-section fade-up" data-cat="portrait" id="sec-portrait">
+    <p class="cat-eyebrow">01 — Portrait</p>
+    <h2 class="cat-title">Portrait Photography</h2>
+    <p class="cat-desc">Intimate portraits that reveal character, emotion and beauty through light and expression.</p>
+    <div class="cat-grid" id="grid-portrait"></div>
   </div>
+
+  <div class="cat-section fade-up" data-cat="models" id="sec-models">
+    <p class="cat-eyebrow">02 — Models</p>
+    <h2 class="cat-title">Model Photography</h2>
+    <p class="cat-desc">Full-body model work showcasing form, movement and presence in carefully crafted compositions.</p>
+    <div class="cat-grid" id="grid-models"></div>
+  </div>
+
+  <div class="cat-section fade-up" data-cat="fashion" id="sec-fashion">
+    <p class="cat-eyebrow">03 — Fashion</p>
+    <h2 class="cat-title">Fashion &amp; Editorial</h2>
+    <p class="cat-desc">Fashion editorial photography — where clothing, styling and artistry combine in striking visual narratives.</p>
+    <div class="cat-grid" id="grid-fashion"></div>
+  </div>
+
+  <div class="cat-section fade-up" data-cat="conceptual" id="sec-conceptual">
+    <p class="cat-eyebrow">04 — Conceptual</p>
+    <h2 class="cat-title">Conceptual &amp; Creative</h2>
+    <p class="cat-desc">Artistic photography that pushes boundaries — blending visual storytelling with imagination and craft.</p>
+    <div class="cat-grid" id="grid-conceptual"></div>
+  </div>
+
 </div>
 
 <script src="nav.js"></script>
 <script>
-const imgs = [
-  'https://static.wixstatic.com/media/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_889faebbb775468e84df09837d98f12f~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_889faebbb775468e84df09837d98f12f~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_3067d00311b64dc1bc2810d4f0eef55f~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_3067d00311b64dc1bc2810d4f0eef55f~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_02e0f418e48340aab6e2b1c65f94a3b4~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_02e0f418e48340aab6e2b1c65f94a3b4~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_f33ede42f92b4fd98349adef15ec8b08~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_f33ede42f92b4fd98349adef15ec8b08~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_2904b08342e3481d919c64589cc85461~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_2904b08342e3481d919c64589cc85461~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_5c68e66db750498faaeae3f8ab77cadb~mv2.jpg/v1/fill/w_800,h_540,q_90,enc_avif,quality_auto/6cead5_5c68e66db750498faaeae3f8ab77cadb~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_a338d060850444f187560edc72810b82~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_a338d060850444f187560edc72810b82~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_982cb374650a4c1ea3892e5dac46557e~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_982cb374650a4c1ea3892e5dac46557e~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_e1246f67aabd45f19fe74d24e2d8b22b~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_e1246f67aabd45f19fe74d24e2d8b22b~mv2_d_6000_4000_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_090e9f84afbc40288b2c92dc2650a077~mv2_d_6000_4000_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_090e9f84afbc40288b2c92dc2650a077~mv2_d_6000_4000_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg',
-  'https://static.wixstatic.com/media/6cead5_80298dfb81ab4b108b8edfbd6cbd3f2f~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_80298dfb81ab4b108b8edfbd6cbd3f2f~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_fb4a9979b089415e8878c8a3965a8aee~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_fb4a9979b089415e8878c8a3965a8aee~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_22c09504f5c3408caca48757baed0418~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_22c09504f5c3408caca48757baed0418~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_d6537608145d4c4cb8ecbdc68a73ec42~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_d6537608145d4c4cb8ecbdc68a73ec42~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_7f73aefec56c47a9adac141dbbfcbbb7~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_7f73aefec56c47a9adac141dbbfcbbb7~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_7e997089028f48d8aca621143d37e5d3~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_7e997089028f48d8aca621143d37e5d3~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_75da0fafaa57419c993ded60d23914b3~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_75da0fafaa57419c993ded60d23914b3~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_ed56a285bd8849bcad325a131f52996f~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_ed56a285bd8849bcad325a131f52996f~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_9831bd3512f94fb185b3b5726b622410~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_9831bd3512f94fb185b3b5726b622410~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_7b6caf51852544e9b1896a01862b4ea6~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_7b6caf51852544e9b1896a01862b4ea6~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_b9671c041c7b4244885cb6e4eed3024d~mv2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_b9671c041c7b4244885cb6e4eed3024d~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_d6d954eabc584b99a777d1de758567bf~mv2.jpg/v1/fill/w_800,h_533,q_90,enc_avif,quality_auto/6cead5_d6d954eabc584b99a777d1de758567bf~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_5b0d6744ff1248178412a25b5d5b75b9~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_5b0d6744ff1248178412a25b5d5b75b9~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_70ede8cacb7243799a5ecb26d8674fda~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_70ede8cacb7243799a5ecb26d8674fda~mv2.jpg',
-  'https://static.wixstatic.com/media/6cead5_6cbd20874d87407eab286ef9f2861890~mv2.jpg/v1/fill/w_800,h_1200,q_90,enc_avif,quality_auto/6cead5_6cbd20874d87407eab286ef9f2861890~mv2.jpg',
-];
+const W = 'https://static.wixstatic.com/media/';
+function p(f, w, h) {
+  return W + f + '/v1/fill/w_' + (w||800) + ',h_' + (h||1067) + ',q_90,enc_avif,quality_auto/' + f;
+}
+const L = [800, 533]; // landscape dimensions shorthand
 
-const g = document.getElementById('fashionGrid');
-imgs.forEach((src, idx) => {
-  const d = document.createElement('div'); d.className = 'thumb';
-  d.innerHTML = `<img src="${src}" loading="lazy" alt="Fashion photo"><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>`;
-  d.onclick = () => openLB(imgs, idx);
-  g.appendChild(d);
+const cats = {
+  portrait: [
+    p('6cead5_f93508183bc24945a38308a011c3f39c~mv2.jpg'),
+    p('6cead5_80352a550c504ca98ee843bf0a5e59be~mv2.jpg'),
+    p('6cead5_f60138d4f1e942df9b45d3bc758bc537~mv2.jpg'),
+    p('6cead5_9987854e4770415aaad03d6a4e8f60a1~mv2.jpg'),
+    p('6cead5_889faebbb775468e84df09837d98f12f~mv2.jpg'),
+    p('6cead5_3067d00311b64dc1bc2810d4f0eef55f~mv2.jpg'),
+    p('6cead5_02e0f418e48340aab6e2b1c65f94a3b4~mv2.jpg'),
+    p('6cead5_f33ede42f92b4fd98349adef15ec8b08~mv2.jpg'),
+    p('6cead5_2904b08342e3481d919c64589cc85461~mv2.jpg'),
+  ],
+  models: [
+    p('6cead5_5c68e66db750498faaeae3f8ab77cadb~mv2.jpg', 800, 540),
+    p('6cead5_a338d060850444f187560edc72810b82~mv2.jpg'),
+    p('6cead5_982cb374650a4c1ea3892e5dac46557e~mv2.jpg'),
+    p('6cead5_e5b30fc11a3e442c971064dd03eb607d~mv2_d_4000_6000_s_4_2.jpg'),
+    p('6cead5_80298dfb81ab4b108b8edfbd6cbd3f2f~mv2.jpg'),
+    p('6cead5_fb4a9979b089415e8878c8a3965a8aee~mv2.jpg'),
+    p('6cead5_22c09504f5c3408caca48757baed0418~mv2.jpg'),
+    p('6cead5_d6537608145d4c4cb8ecbdc68a73ec42~mv2.jpg'),
+    p('6cead5_7f73aefec56c47a9adac141dbbfcbbb7~mv2.jpg'),
+  ],
+  fashion: [
+    p('6cead5_27544d0072be42ba9d4e99623acbbb69~mv2_d_6000_4000_s_4_2.jpg', ...L),
+    p('6cead5_e1246f67aabd45f19fe74d24e2d8b22b~mv2_d_6000_4000_s_4_2.jpg', ...L),
+    p('6cead5_090e9f84afbc40288b2c92dc2650a077~mv2_d_6000_4000_s_4_2.jpg', ...L),
+    p('6cead5_50c3e44fd4d14a7caa870ad85f1c636b~mv2_d_5670_3780_s_4_2.jpg', ...L),
+    p('6cead5_7e997089028f48d8aca621143d37e5d3~mv2.jpg'),
+    p('6cead5_75da0fafaa57419c993ded60d23914b3~mv2.jpg'),
+    p('6cead5_ed56a285bd8849bcad325a131f52996f~mv2.jpg'),
+    p('6cead5_9831bd3512f94fb185b3b5726b622410~mv2.jpg'),
+    p('6cead5_7b6caf51852544e9b1896a01862b4ea6~mv2.jpg'),
+  ],
+  conceptual: [
+    p('6cead5_af4871542c1247fe8c8a4dbdea6d9ce7~mv2.jpg'),
+    p('6cead5_b9671c041c7b4244885cb6e4eed3024d~mv2.jpg', ...L),
+    p('6cead5_d6d954eabc584b99a777d1de758567bf~mv2.jpg', ...L),
+    p('6cead5_36cd8cd0128047d0b50940cd1678972c~mv2.jpg'),
+    p('6cead5_5b0d6744ff1248178412a25b5d5b75b9~mv2.jpg'),
+    p('6cead5_70ede8cacb7243799a5ecb26d8674fda~mv2.jpg'),
+    p('6cead5_7433841c51634849a0a195231c6ef59b~mv2.jpg'),
+    p('6cead5_6cbd20874d87407eab286ef9f2861890~mv2.jpg'),
+    p('6cead5_d0c5c352072c457993afd265593bae7e~mv2.jpg'),
+  ],
+};
+
+const allImgs = [...cats.portrait, ...cats.models, ...cats.fashion, ...cats.conceptual];
+
+function buildGrid(id, imgs, offset) {
+  const g = document.getElementById(id);
+  imgs.forEach((src, i) => {
+    const d = document.createElement('div'); d.className = 'thumb';
+    d.innerHTML = '<img src="' + src + '" loading="lazy" alt=""><div class="thumb-overlay"><div class="zoom-icon">⤢</div></div>';
+    d.onclick = () => openLB(allImgs, offset + i);
+    g.appendChild(d);
+  });
+}
+
+const offsets = [0, cats.portrait.length, cats.portrait.length + cats.models.length, cats.portrait.length + cats.models.length + cats.fashion.length];
+buildGrid('grid-portrait',   cats.portrait,   offsets[0]);
+buildGrid('grid-models',     cats.models,     offsets[1]);
+buildGrid('grid-fashion',    cats.fashion,    offsets[2]);
+buildGrid('grid-conceptual', cats.conceptual, offsets[3]);
+
+document.querySelectorAll('.cat-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.cat-section').forEach(s => {
+      s.classList.toggle('hidden', f !== 'all' && s.dataset.cat !== f);
+    });
+    if (f !== 'all') document.getElementById('sec-' + f).scrollIntoView({behavior:'smooth', block:'start'});
+  });
 });
 </script>
 </body>
